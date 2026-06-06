@@ -16,9 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bangladesh Technical Education Technology",
+  title: "Bangladesh National Youth Technical Institute",
   description: "Advanced Learning Management System",
-
 };
 
 export default function RootLayout({
@@ -27,8 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
-     
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable}`}
+    >
       <body className="min-h-screen bg-background antialiased selection:bg-primary/10 selection:text-primary transition-colors duration-500">
         <ThemeProvider
           attribute="class"
@@ -36,9 +38,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ReactQueryProvider>
-            {children}
-          </ReactQueryProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
 
           <Toaster position="top-right" richColors closeButton />
         </ThemeProvider>

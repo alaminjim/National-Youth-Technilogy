@@ -38,7 +38,7 @@ export default function Testimonials() {
     <section className="py-3 font-sans overflow-hidden shadow-sm bg-white dark:bg-gray-950">
       <div className="container mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0066cc] dark:text-blue-400 uppercase tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-tight">
             TESTIMONIAL{" "}
             <span className="text-gray-800 dark:text-white">
               OUR STUDENTS SAY
@@ -71,36 +71,41 @@ export default function Testimonials() {
             className="pb-24 pt-16 Students-swiper"
           >
             {gallery.map((item) => (
-              <SwiperSlide key={item.id} className="pt-12">
-                <div className="relative bg-[#f8f9fa] dark:bg-gray-900 rounded-xl p-8 pt-16 text-center border border-gray-100 dark:border-gray-800 transition-all duration-300 hover:shadow-xl group h-full flex flex-col">
-                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-4 border-white dark:border-gray-900 shadow-md overflow-hidden bg-white">
+              <SwiperSlide key={item.id} className="pt-12 h-auto">
+                <div className="relative bg-white dark:bg-gray-900/60 rounded-2xl p-8 pt-16 text-center border border-gray-200/50 dark:border-gray-850 shadow-sm hover:shadow-xl hover:border-emerald-500/20 hover:-translate-y-1 transition-all duration-300 group h-full flex flex-col">
+                  
+                  {/* Decorative quote mark */}
+                  <span className="absolute right-6 top-6 text-6xl text-emerald-500/5 select-none pointer-events-none font-serif">”</span>
+                  
+                  <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-4 border-white dark:border-gray-950 shadow-md overflow-hidden bg-white group-hover:ring-4 group-hover:ring-emerald-500/10 transition-all duration-300">
                     <Image
                       src={item.image || "/placeholder.png"}
                       alt={item.name || "Student"}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                       unoptimized
                     />
                   </div>
                   <div className="flex-1 flex flex-col items-center">
-                    <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 uppercase tracking-wide">
+                    <h3 className="text-base font-black text-gray-900 dark:text-white uppercase tracking-wide group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200">
                       {item.name}
                     </h3>
-                    <p className="text-[#678E1A] text-xs font-semibold uppercase mt-1">
+                    <p className="text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase mt-1 tracking-wider">
                       {item.position?.role ||
                         item.position?.title ||
                         "Success Student"}
                     </p>
                     {item.bio && (
-                      <p className="text-gray-500 dark:text-gray-400 text-sm mt-4 leading-relaxed line-clamp-3">
+                      <p className="text-gray-500 dark:text-gray-400 text-[12.5px] mt-4 leading-relaxed line-clamp-3">
                         {item.bio}
                       </p>
                     )}
                     <button
                       onClick={() => setActiveItem(item)}
-                      className="mt-auto pt-6 text-[#678E1A] font-bold border-b-2 border-[#678E1A] hover:text-[#567a16] hover:border-[#567a16] transition-colors text-sm uppercase inline-block pb-1"
+                      className="mt-auto pt-6 flex items-center gap-1 text-emerald-600 font-extrabold hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 transition-colors text-xs uppercase tracking-wider pb-1"
                     >
-                      read more
+                      <span>read more</span>
+                      <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </button>
                   </div>
                 </div>
@@ -140,7 +145,7 @@ export default function Testimonials() {
             </button>
 
             <div className="flex flex-col items-center text-center">
-              <div className="relative w-28 h-28 rounded-full overflow-hidden border-4 border-[#678E1A] mb-4 shadow-inner">
+              <div className="relative w-28 h-28 rounded-full overflow-hidden border-4 border-emerald-500 mb-4 shadow-inner">
                 <Image
                   src={activeItem.image || "/placeholder.png"}
                   alt={activeItem.name}
@@ -152,7 +157,7 @@ export default function Testimonials() {
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
                 {activeItem.name}
               </h3>
-              <p className="text-[#678E1A] font-bold uppercase text-xs tracking-widest mt-1">
+              <p className="text-emerald-600 dark:text-emerald-400 font-bold uppercase text-xs tracking-widest mt-1">
                 {activeItem.position?.role ||
                   activeItem.position?.title ||
                   "Success Student"}
@@ -175,7 +180,7 @@ export default function Testimonials() {
               className="p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100/50 dark:border-emerald-900/30"
             >
               <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed flex items-start gap-2">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#678E1A] shrink-0" />
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                 {entry}
               </p>
             </div>
@@ -190,7 +195,7 @@ export default function Testimonials() {
           >
             {entry.title && (
               <h5 className="font-semibold text-gray-800 dark:text-gray-200 text-sm mb-1 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#678E1A]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                 {entry.title}
               </h5>
             )}

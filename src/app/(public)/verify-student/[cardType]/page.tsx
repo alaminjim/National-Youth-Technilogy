@@ -4,12 +4,7 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import { useParams, useSearchParams, useRouter } from "next/navigation";
-import { 
-  Loader2, 
-  AlertTriangle, 
-  Printer, 
-  ArrowLeft
-} from "lucide-react";
+import { Loader2, AlertTriangle, Printer, ArrowLeft } from "lucide-react";
 import { getResultByRollAction } from "@/features/public_assets/student-result/actions.ts";
 import Link from "next/link";
 import QRCode from "react-qr-code";
@@ -73,12 +68,7 @@ const CardQRCode = ({ value, size = 60 }: { value: string; size?: number }) => {
   }
 
   return (
-    <QRCode
-      value={value}
-      size={size}
-      bgColor="#ffffff"
-      fgColor="#000000"
-    />
+    <QRCode value={value} size={size} bgColor="#ffffff" fgColor="#000000" />
   );
 };
 
@@ -128,8 +118,11 @@ function VerificationPortalContent() {
   const getQRData = (type: string) => {
     if (typeof window === "undefined") return "";
     const origin = window.location.origin;
-    const sessionStr = student?.month1 && student?.year1 ? `&sess=${student.month1}-${student.year1}` : "";
-    
+    const sessionStr =
+      student?.month1 && student?.year1
+        ? `&sess=${student.month1}-${student.year1}`
+        : "";
+
     if (type === "reg") {
       return `${origin}/verify-student/reg?roll=${student?.roll || ""}${sessionStr}`;
     } else if (type === "id") {
@@ -603,9 +596,11 @@ body { margin: 0; font-family: Arial, sans-serif; }
           <Loader2 className="animate-spin text-blue-600 relative" size={44} />
         </div>
         <div className="text-center space-y-2">
-          <p className="text-lg font-bold text-slate-800 dark:text-slate-200">Verifying Digital Record...</p>
+          <p className="text-lg font-bold text-slate-800 dark:text-slate-200">
+            Verifying Digital Record...
+          </p>
           <p className="text-sm text-slate-500 dark:text-slate-400 max-w-xs mx-auto animate-pulse">
-            Connecting to Bangladesh Technical Education Technology registry
+            Connecting to Bangladesh National Youth Technical Institute registry
           </p>
         </div>
       </div>
@@ -623,11 +618,16 @@ body { margin: 0; font-family: Arial, sans-serif; }
             Verification Failed
           </h2>
           <p className="text-sm font-semibold text-slate-500 dark:text-slate-400">
-            No active student record could be verified matching Roll Number: <strong className="text-slate-800 dark:text-slate-100">{roll || "None"}</strong>
+            No active student record could be verified matching Roll Number:{" "}
+            <strong className="text-slate-800 dark:text-slate-100">
+              {roll || "None"}
+            </strong>
           </p>
         </div>
         <div className="text-xs text-left bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 p-4 rounded-xl space-y-2 leading-relaxed text-slate-600 dark:text-slate-400">
-          <p className="font-bold text-slate-800 dark:text-slate-200">Common reasons for failure:</p>
+          <p className="font-bold text-slate-800 dark:text-slate-200">
+            Common reasons for failure:
+          </p>
           <ul className="list-disc pl-4 space-y-1">
             <li>The Roll Number is entered incorrectly.</li>
             <li>The student profile has not been approved or issued yet.</li>
@@ -653,14 +653,10 @@ body { margin: 0; font-family: Arial, sans-serif; }
     );
   }
 
-
-
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8 animate-in fade-in duration-500">
-      
       {/* Card Render Section */}
       <div className="bg-slate-950 rounded-[28px] border-4 border-slate-900 overflow-hidden shadow-2xl p-4 sm:p-6 md:p-8 flex justify-center items-center print:bg-white print:border-none print:shadow-none">
-        
         {/* Render: Admit Card */}
         {cardType === "admit" && (
           <div
@@ -683,7 +679,14 @@ body { margin: 0; font-family: Arial, sans-serif; }
               }}
             >
               <div style={{ height: "17.51cqw" }} />
-              <p style={{ fontSize: "1.36cqw", color: "#333", marginBottom: "1.51cqw", fontWeight: 700 }}>
+              <p
+                style={{
+                  fontSize: "1.36cqw",
+                  color: "#333",
+                  marginBottom: "1.51cqw",
+                  fontWeight: 700,
+                }}
+              >
                 Serial No. {student.studentId}
               </p>
 
@@ -769,37 +772,113 @@ body { margin: 0; font-family: Arial, sans-serif; }
                   }}
                 />
 
-                <div className="w-full flex flex-col" style={{ gap: "0.67cqw" }}>
-                  <div className="flex items-center justify-end" style={{ gap: "0.67cqw" }}>
-                    <span style={{ fontSize: "1.3cqw", fontWeight: 700, color: "#222", fontFamily: "'Times New Roman', Georgia, serif" }}>
+                <div
+                  className="w-full flex flex-col"
+                  style={{ gap: "0.67cqw" }}
+                >
+                  <div
+                    className="flex items-center justify-end"
+                    style={{ gap: "0.67cqw" }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "1.3cqw",
+                        fontWeight: 700,
+                        color: "#222",
+                        fontFamily: "'Times New Roman', Georgia, serif",
+                      }}
+                    >
                       Roll.No :
                     </span>
-                    <span style={{ border: "1.5px solid #555", minWidth: "8.75cqw", textAlign: "center", padding: "0.27cqw 0.67cqw", fontSize: "1.36cqw", fontWeight: 700, color: "#111", background: "white" }}>
+                    <span
+                      style={{
+                        border: "1.5px solid #555",
+                        minWidth: "8.75cqw",
+                        textAlign: "center",
+                        padding: "0.27cqw 0.67cqw",
+                        fontSize: "1.36cqw",
+                        fontWeight: 700,
+                        color: "#111",
+                        background: "white",
+                      }}
+                    >
                       {student.roll || "—"}
                     </span>
                   </div>
-                  <div className="flex items-center justify-end" style={{ gap: "0.67cqw" }}>
-                    <span style={{ fontSize: "1.3cqw", fontWeight: 700, color: "#222", fontFamily: "'Times New Roman', Georgia, serif" }}>
+                  <div
+                    className="flex items-center justify-end"
+                    style={{ gap: "0.67cqw" }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "1.3cqw",
+                        fontWeight: 700,
+                        color: "#222",
+                        fontFamily: "'Times New Roman', Georgia, serif",
+                      }}
+                    >
                       Reg.No :
                     </span>
-                    <span style={{ border: "1.5px solid #555", minWidth: "8.75cqw", textAlign: "center", padding: "0.27cqw 0.67cqw", fontSize: "1.36cqw", fontWeight: 700, color: "#111", background: "white" }}>
+                    <span
+                      style={{
+                        border: "1.5px solid #555",
+                        minWidth: "8.75cqw",
+                        textAlign: "center",
+                        padding: "0.27cqw 0.67cqw",
+                        fontSize: "1.36cqw",
+                        fontWeight: 700,
+                        color: "#111",
+                        background: "white",
+                      }}
+                    >
                       {student.regNumber || "—"}
                     </span>
                   </div>
                 </div>
 
-                <p style={{ fontSize: "1.3cqw", fontWeight: 700, color: "#222", textAlign: "right", fontFamily: "'Times New Roman', Georgia, serif", marginTop: "0.5cqw" }}>
+                <p
+                  style={{
+                    fontSize: "1.3cqw",
+                    fontWeight: 700,
+                    color: "#222",
+                    textAlign: "right",
+                    fontFamily: "'Times New Roman', Georgia, serif",
+                    marginTop: "0.5cqw",
+                  }}
+                >
                   Sex: {student.gender || "—"}
                 </p>
-                <p style={{ fontSize: "1.3cqw", fontWeight: 700, color: "#222", textAlign: "right", fontFamily: "'Times New Roman', Georgia, serif", marginTop: "0.3cqw" }}>
+                <p
+                  style={{
+                    fontSize: "1.3cqw",
+                    fontWeight: 700,
+                    color: "#222",
+                    textAlign: "right",
+                    fontFamily: "'Times New Roman', Georgia, serif",
+                    marginTop: "0.3cqw",
+                  }}
+                >
                   Type of the Examinee : Regular
                 </p>
               </div>
 
               {/* Printing Date */}
-              <div style={{ position: "absolute", bottom: "4.04cqw", left: "11.78cqw" }}>
-                <p style={{ fontSize: "1.07cqw", color: "#222", fontWeight: 700 }}>
-                  Verified Date: {formatDOB(student.joinedDate || new Date().toISOString())}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "4.04cqw",
+                  left: "11.78cqw",
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "1.07cqw",
+                    color: "#222",
+                    fontWeight: 700,
+                  }}
+                >
+                  Verified Date:{" "}
+                  {formatDOB(student.joinedDate || new Date().toISOString())}
                 </p>
               </div>
             </div>
@@ -807,119 +886,257 @@ body { margin: 0; font-family: Arial, sans-serif; }
         )}
 
         {/* Render: Certificate */}
-        {cardType === "certificate" && (() => {
-          const slNo = student.studentId?.replace("STU-", "") || "—";
-          const today = new Date().toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          });
-          const P = {
-            slNo: { top: "37.9%", left: "17%" },
-            regNo: { top: "37.2%", left: "74.5%" },
-            session: { top: "41.8%", left: "70.5%" },
-            name: { top: "43.7%", left: "32.0%" },
-            father: { top: "48.3%", left: "28.0%" },
-            mother: { top: "53.4%", left: "18.5%" },
-            institute: { top: "58%", left: "19.5%" },
-            roll: { top: "63.2%", left: "27.0%" },
-            qual: { top: "63.2%", left: "50.0%" },
-            exam: { top: "67.8%", left: "41.5%" },
-            cgpa: { top: "68%", left: "77.5%" },
-            date1: { top: "80.2%", left: "25.0%" },
-            date2: { top: "82%", left: "18.5%" },
-            qr: { top: "23%", left: "80%" },
-          };
-          return (
-            <div
-              className="w-full relative bg-white border border-slate-200 rounded-xl overflow-hidden shadow-md"
-              style={{
-                aspectRatio: "297 / 210",
-                containerType: "inline-size",
-              }}
-            >
-              <img
-                src="/Certificate.png"
-                alt=""
-                className="absolute inset-0 w-full h-full object-fill pointer-events-none"
-              />
+        {cardType === "certificate" &&
+          (() => {
+            const slNo = student.studentId?.replace("STU-", "") || "—";
+            const today = new Date().toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            });
+            const P = {
+              slNo: { top: "37.9%", left: "17%" },
+              regNo: { top: "37.2%", left: "74.5%" },
+              session: { top: "41.8%", left: "70.5%" },
+              name: { top: "43.7%", left: "32.0%" },
+              father: { top: "48.3%", left: "28.0%" },
+              mother: { top: "53.4%", left: "18.5%" },
+              institute: { top: "58%", left: "19.5%" },
+              roll: { top: "63.2%", left: "27.0%" },
+              qual: { top: "63.2%", left: "50.0%" },
+              exam: { top: "67.8%", left: "41.5%" },
+              cgpa: { top: "68%", left: "77.5%" },
+              date1: { top: "80.2%", left: "25.0%" },
+              date2: { top: "82%", left: "18.5%" },
+              qr: { top: "23%", left: "80%" },
+            };
+            return (
               <div
-                className="absolute inset-0"
-                style={{ fontFamily: "'Times New Roman', Georgia, serif" }}
+                className="w-full relative bg-white border border-slate-200 rounded-xl overflow-hidden shadow-md"
+                style={{
+                  aspectRatio: "297 / 210",
+                  containerType: "inline-size",
+                }}
               >
-                {/* SL No */}
-                <div style={{ position: "absolute", top: P.slNo.top, left: P.slNo.left, fontSize: "1.25cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {slNo}
-                </div>
-                {/* Reg No */}
-                <div style={{ position: "absolute", top: P.regNo.top, left: P.regNo.left, fontSize: "1.25cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {student.regNumber || "—"}
-                </div>
-                {/* Session */}
-                <div style={{ position: "absolute", top: P.session.top, left: P.session.left, fontSize: "1.25cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {monthName(student.month1)} - {monthName(student.month2)} {student.year1}
-                </div>
-                {/* Name */}
-                <div style={{ position: "absolute", top: P.name.top, left: P.name.left, right: "8%", fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {student.name || "—"}
-                </div>
-                {/* Father */}
-                <div style={{ position: "absolute", top: P.father.top, left: P.father.left, right: "14%", fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {student.fatherName || "—"}
-                </div>
-                {/* Mother */}
-                <div style={{ position: "absolute", top: P.mother.top, left: P.mother.left, right: "14%", fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {student.motherName || "—"}
-                </div>
-                {/* Institute */}
-                <div style={{ position: "absolute", top: P.institute.top, left: P.institute.left, right: "8%", fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {student.institute || "—"}
-                </div>
-                {/* Roll */}
-                <div style={{ position: "absolute", top: P.roll.top, left: P.roll.left, fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {student.roll || "—"}
-                </div>
-                {/* Qual */}
-                <div style={{ position: "absolute", top: P.qual.top, left: P.qual.left, right: "8%", fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {student.educationQualification || "—"}
-                </div>
-                {/* Exam */}
-                <div style={{ position: "absolute", top: P.exam.top, left: P.exam.left, fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {monthName(student.month1)} {student.year1}
-                </div>
-                {/* CGPA */}
-                <div style={{ position: "absolute", top: P.cgpa.top, left: P.cgpa.left, fontSize: "1.35cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  —
-                </div>
-                {/* Date 1 */}
-                <div style={{ position: "absolute", top: P.date1.top, left: P.date1.left, fontSize: "1.1cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {today}
-                </div>
-                {/* Date 2 */}
-                <div style={{ position: "absolute", top: P.date2.top, left: P.date2.left, fontSize: "1.1cqw", fontWeight: 700, fontStyle: "italic", color: "#000" }}>
-                  {today}
-                </div>
+                <img
+                  src="/Certificate.png"
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+                />
+                <div
+                  className="absolute inset-0"
+                  style={{ fontFamily: "'Times New Roman', Georgia, serif" }}
+                >
+                  {/* SL No */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.slNo.top,
+                      left: P.slNo.left,
+                      fontSize: "1.25cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {slNo}
+                  </div>
+                  {/* Reg No */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.regNo.top,
+                      left: P.regNo.left,
+                      fontSize: "1.25cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {student.regNumber || "—"}
+                  </div>
+                  {/* Session */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.session.top,
+                      left: P.session.left,
+                      fontSize: "1.25cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {monthName(student.month1)} - {monthName(student.month2)}{" "}
+                    {student.year1}
+                  </div>
+                  {/* Name */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.name.top,
+                      left: P.name.left,
+                      right: "8%",
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {student.name || "—"}
+                  </div>
+                  {/* Father */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.father.top,
+                      left: P.father.left,
+                      right: "14%",
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {student.fatherName || "—"}
+                  </div>
+                  {/* Mother */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.mother.top,
+                      left: P.mother.left,
+                      right: "14%",
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {student.motherName || "—"}
+                  </div>
+                  {/* Institute */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.institute.top,
+                      left: P.institute.left,
+                      right: "8%",
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {student.institute || "—"}
+                  </div>
+                  {/* Roll */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.roll.top,
+                      left: P.roll.left,
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {student.roll || "—"}
+                  </div>
+                  {/* Qual */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.qual.top,
+                      left: P.qual.left,
+                      right: "8%",
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {student.educationQualification || "—"}
+                  </div>
+                  {/* Exam */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.exam.top,
+                      left: P.exam.left,
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {monthName(student.month1)} {student.year1}
+                  </div>
+                  {/* CGPA */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.cgpa.top,
+                      left: P.cgpa.left,
+                      fontSize: "1.35cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    —
+                  </div>
+                  {/* Date 1 */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.date1.top,
+                      left: P.date1.left,
+                      fontSize: "1.1cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {today}
+                  </div>
+                  {/* Date 2 */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.date2.top,
+                      left: P.date2.left,
+                      fontSize: "1.1cqw",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      color: "#000",
+                    }}
+                  >
+                    {today}
+                  </div>
 
-                {/* QR Code */}
-                <div style={{
-                  position: "absolute",
-                  top: P.qr.top,
-                  left: P.qr.left,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "2px",
-                }}>
-                  <CardQRCode
-                    value={`${typeof window !== "undefined" ? window.location.origin : ""}/verify-student/certificate?roll=${student.roll || ""}`}
-                    size={52}
-                  />
+                  {/* QR Code */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: P.qr.top,
+                      left: P.qr.left,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: "2px",
+                    }}
+                  >
+                    <CardQRCode
+                      value={`${typeof window !== "undefined" ? window.location.origin : ""}/verify-student/certificate?roll=${student.roll || ""}`}
+                      size={52}
+                    />
+                  </div>
                 </div>
-
               </div>
-            </div>
-          );
-        })()}
+            );
+          })()}
 
         {/* Render: Registration Card */}
         {cardType === "reg" && (
@@ -930,7 +1147,11 @@ body { margin: 0; font-family: Arial, sans-serif; }
               containerType: "inline-size",
             }}
           >
-            <img src="/reg.png" alt="" className="absolute inset-0 w-full h-full object-fill pointer-events-none" />
+            <img
+              src="/reg.png"
+              alt=""
+              className="absolute inset-0 w-full h-full object-fill pointer-events-none"
+            />
 
             <div
               className="absolute inset-0 overflow-hidden"
@@ -1020,8 +1241,23 @@ body { margin: 0; font-family: Arial, sans-serif; }
                     >
                       {label}
                     </span>
-                    <span style={{ color: "#111", fontWeight: 900, flexShrink: 0, marginRight: "2.4cqw" }}>:</span>
-                    <span style={{ color: "#111", wordBreak: "break-word", fontWeight: 500 }}>
+                    <span
+                      style={{
+                        color: "#111",
+                        fontWeight: 900,
+                        flexShrink: 0,
+                        marginRight: "2.4cqw",
+                      }}
+                    >
+                      :
+                    </span>
+                    <span
+                      style={{
+                        color: "#111",
+                        wordBreak: "break-word",
+                        fontWeight: 500,
+                      }}
+                    >
                       {value || "—"}
                     </span>
                   </div>
@@ -1041,12 +1277,23 @@ body { margin: 0; font-family: Arial, sans-serif; }
                   textAlign: "justify",
                 }}
               >
-                Note: This registration card is valid for six (6) months. For all communications with the board, the institute code, registration number and study session are to be mentioned.
+                Note: This registration card is valid for six (6) months. For
+                all communications with the board, the institute code,
+                registration number and study session are to be mentioned.
               </div>
 
               {/* Print date */}
-              <div style={{ position: "absolute", bottom: "3.5%", left: "0", fontSize: "1.0cqw", color: "#555" }}>
-                Verified Date: {formatDOB(student.joinedDate || new Date().toISOString())}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "3.5%",
+                  left: "0",
+                  fontSize: "1.0cqw",
+                  color: "#555",
+                }}
+              >
+                Verified Date:{" "}
+                {formatDOB(student.joinedDate || new Date().toISOString())}
               </div>
             </div>
           </div>
@@ -1080,7 +1327,10 @@ body { margin: 0; font-family: Arial, sans-serif; }
                 <div className="flex-1 flex flex-col items-center bg-white">
                   <div className="w-[24mm] h-[28mm] border-[0.3mm] border-black overflow-hidden my-[1.5mm]">
                     <img
-                      src={student.picture || "https://i.ibb.co/4p7t0px/placeholder.jpg"}
+                      src={
+                        student.picture ||
+                        "https://i.ibb.co/4p7t0px/placeholder.jpg"
+                      }
                       className="w-full h-full object-cover"
                       alt=""
                     />
@@ -1097,19 +1347,27 @@ body { margin: 0; font-family: Arial, sans-serif; }
                 </p>
                 <p className="font-semibold">
                   <span className="font-black text-gray-900">Reg No: </span>
-                  <span className="text-gray-800">{student.regNumber || "—"}</span>
+                  <span className="text-gray-800">
+                    {student.regNumber || "—"}
+                  </span>
                 </p>
                 <p className="font-semibold">
                   <span className="font-black text-gray-900">Sess: </span>
-                  <span className="text-gray-800">{student.month1}-{student.year1}</span>
+                  <span className="text-gray-800">
+                    {student.month1}-{student.year1}
+                  </span>
                 </p>
                 <p className="font-semibold truncate">
                   <span className="font-black text-gray-900">Course: </span>
-                  <span className="text-gray-800">{student.educationQualification || "—"}</span>
+                  <span className="text-gray-800">
+                    {student.educationQualification || "—"}
+                  </span>
                 </p>
                 <p className="font-semibold">
                   <span className="font-black text-gray-900">Mobile: </span>
-                  <span className="text-gray-800">{student.guardianPhone || "—"}</span>
+                  <span className="text-gray-800">
+                    {student.guardianPhone || "—"}
+                  </span>
                 </p>
               </div>
             </div>
@@ -1120,7 +1378,8 @@ body { margin: 0; font-family: Arial, sans-serif; }
                 Terms and conditions
               </p>
               <p className="text-[5.5pt] font-medium leading-tight text-gray-700 mb-[3mm] px-1">
-                This card is not transferable. If the card is found anywhere other than the user, it is requested to be returned.
+                This card is not transferable. If the card is found anywhere
+                other than the user, it is requested to be returned.
               </p>
 
               <div className="mb-[2.5mm] flex flex-col items-center">
@@ -1132,12 +1391,20 @@ body { margin: 0; font-family: Arial, sans-serif; }
                 </div>
               </div>
 
-
-
               <div className="text-[6.5pt] font-bold text-gray-800 mb-[3mm] leading-relaxed">
-                Joined Date: {student.joinedDate ? new Date(student.joinedDate).toLocaleDateString("en-GB").replace(/ /g, "-") : "N/A"}
+                Joined Date:{" "}
+                {student.joinedDate
+                  ? new Date(student.joinedDate)
+                      .toLocaleDateString("en-GB")
+                      .replace(/ /g, "-")
+                  : "N/A"}
                 <br />
-                Expire Date: {student.expireDate ? new Date(student.expireDate).toLocaleDateString("en-GB").replace(/ /g, "-") : "N/A"}
+                Expire Date:{" "}
+                {student.expireDate
+                  ? new Date(student.expireDate)
+                      .toLocaleDateString("en-GB")
+                      .replace(/ /g, "-")
+                  : "N/A"}
               </div>
 
               <p className="text-[#c1121f] font-black text-[8pt] uppercase tracking-[0.2px] mb-[0.5px]">
@@ -1146,7 +1413,11 @@ body { margin: 0; font-family: Arial, sans-serif; }
 
               <div className="text-[5.2pt] font-bold leading-normal text-gray-700 max-w-[45mm] line-clamp-3">
                 {student.officeAddress ? (
-                  <span dangerouslySetInnerHTML={{ __html: student.officeAddress.replace(/\n/g, "<br/>") }} />
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: student.officeAddress.replace(/\n/g, "<br/>"),
+                    }}
+                  />
                 ) : (
                   <>
                     Gawsia, Bhulta, Rupganj, Narayanganj
@@ -1163,8 +1434,6 @@ body { margin: 0; font-family: Arial, sans-serif; }
           </div>
         )}
       </div>
-
-
 
       {/* Print / Download Button Block */}
       <div className="flex flex-col sm:flex-row gap-3 pt-2 print:hidden">

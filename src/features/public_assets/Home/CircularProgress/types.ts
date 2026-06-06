@@ -10,4 +10,6 @@ export interface ImpactStat {
   value: number;
   label: string;
   color: string;
+  subtitle?: string;
+  icon?: string;
 }

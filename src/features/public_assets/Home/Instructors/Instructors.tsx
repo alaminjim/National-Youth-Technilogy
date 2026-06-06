@@ -37,7 +37,7 @@ export default function Instructors() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-800 dark:text-gray-200 uppercase">
-            OUR <span className="text-[#678E1A]">TEACHERS</span>
+            OUR <span className="text-emerald-600 dark:text-emerald-400">TEACHERS</span>
           </h2>
         </div>
 
@@ -81,14 +81,14 @@ export default function Instructors() {
                     <h3 className="text-sm font-bold text-gray-800 dark:text-gray-100 line-clamp-1">
                       {teacher.name}
                     </h3>
-                    <p className="text-[#678E1A] text-[10px] font-bold uppercase line-clamp-1">
+                    <p className="text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase line-clamp-1">
                       {teacher.position?.role ||
                         teacher.position?.title ||
                         "Instructor"}
                     </p>
                     <button
                       onClick={() => setActiveTeacher(teacher)}
-                      className="mt-2 w-full bg-[#678E1A] hover:bg-[#678E1A]/90 text-white py-1.5 rounded text-[10px] font-bold uppercase tracking-wide transition"
+                      className="mt-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 rounded text-[10px] font-bold uppercase tracking-wide transition"
                     >
                       View Details
                     </button>
@@ -130,7 +130,7 @@ export default function Instructors() {
             <h3 className="text-base font-bold text-gray-800 dark:text-gray-200 mb-1">
               {activeTeacher.name}
             </h3>
-            <p className="text-[#678E1A] text-[10px] font-bold uppercase mb-3">
+            <p className="text-emerald-600 dark:text-emerald-400 text-[10px] font-bold uppercase mb-3">
               {activeTeacher.position?.role ||
                 activeTeacher.position?.title ||
                 "Instructor"}

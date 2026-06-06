@@ -39,7 +39,7 @@ export default function About() {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-32">
-        <Loader2 className="animate-spin text-[#678E1A]" size={32} />
+        <Loader2 className="animate-spin text-emerald-600 dark:text-emerald-400" size={32} />
       </div>
     );
   }
@@ -112,9 +112,9 @@ export default function About() {
           <div className="lg:col-span-7 flex flex-col justify-start">
             <div className="flex items-center gap-2 mb-6 border-b border-gray-200 pb-2">
               <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                About <span className="text-[#678E1A]">Us</span>
+                About <span className="text-emerald-600 dark:text-emerald-400">Us</span>
               </h2>
-              <div className="flex-1 h-0.75 bg-[#678E1A] ml-2 max-w-30" />
+              <div className="flex-1 h-0.75 bg-emerald-600 dark:bg-emerald-500 ml-2 max-w-30" />
             </div>
             <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
               {renderText(about.text, about, "green")}
@@ -136,9 +136,9 @@ export default function About() {
           <div className="lg:col-span-7 flex flex-col justify-start">
             <div className="flex items-center gap-2 mb-6 border-b border-gray-200 pb-2">
               <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                FOUNDER <span className="text-[#678E1A]">&</span> CEO
+                FOUNDER <span className="text-emerald-600 dark:text-emerald-400">&</span> CEO
               </h2>
-              <div className="flex-1 h-0.75 bg-[#678E1A] ml-2 max-w-30" />
+              <div className="flex-1 h-0.75 bg-emerald-600 dark:bg-emerald-500 ml-2 max-w-30" />
             </div>
             <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
               {renderText(founder.text, founder, "green")}
@@ -194,7 +194,7 @@ export default function About() {
                     {modalItem.title || "Details"}
                   </h3>
                   {modalItem.name && (
-                    <p className="text-sm font-semibold text-[#678E1A] mt-1">
+                    <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mt-1">
                       {modalItem.name}
                     </p>
                   )}
@@ -219,7 +219,7 @@ export default function About() {
                     {modalItem.title || "Details"}
                   </h3>
                   {modalItem.name && (
-                    <p className="text-sm font-semibold text-[#678E1A] mt-1">
+                    <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mt-1">
                       {modalItem.name}
                     </p>
                   )}

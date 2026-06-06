@@ -46,17 +46,17 @@ export const Footer = () => {
             <Link href="/" className="flex items-center gap-3">
               <div className="w-16 h-16 bg-white p-1 rounded-sm shadow-lg">
                 <img
-                  src="https://i.ibb.co/r2dVnpdh/Screenshot-from-2026-03-04-16-25-16-removebg-preview.png"
+                  src="https://i.ibb.co.com/QvN5MgHY/Whats-App-Image-2026-06-05-at-8-38-25-PM-removebg-preview.png"
                   alt="Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
               <div className="flex flex-col">
                 <h2 className="font-black text-xl leading-tight tracking-tighter uppercase">
-                  Bangladesh Technical
+                  Bangladesh National
                 </h2>
-                <p className="text-[#0066cc] text-[11px] font-bold uppercase tracking-widest">
-                  Education Technology
+                <p className="text-cyan-500 text-[11px] font-bold uppercase tracking-widest">
+                  Youth Technical Institute
                 </p>
               </div>
             </Link>
@@ -83,7 +83,7 @@ export const Footer = () => {
           </div>
 
           <div className="lg:pl-10 relative">
-            <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-0.5 bg-[#84cc16]"></div>
+            <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-0.5 bg-emerald-500"></div>
             <h3 className="text-lg font-black uppercase mb-8 tracking-widest">
               USEFUL LINKS
             </h3>
@@ -92,7 +92,7 @@ export const Footer = () => {
                 <li key={i}>
                   <Link
                     href={item.href}
-                    className="text-xs font-bold text-gray-300 hover:text-[#84cc16] transition-colors border-b border-gray-600 pb-1 inline-block min-w-30"
+                    className="text-xs font-bold text-gray-300 hover:text-emerald-500 transition-colors border-b border-gray-600 pb-1 inline-block min-w-30"
                   >
                     {item.label}
                   </Link>
@@ -122,7 +122,7 @@ export const Footer = () => {
                     href="https://btetbd.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#84cc16] hover:underline"
+                    className="text-emerald-500 hover:underline"
                   >
                     www.btetbd.com
                   </Link>
@@ -169,7 +169,7 @@ export const Footer = () => {
                       key={day}
                       className={`text-[10px] font-bold p-1 transition-all ${
                         isToday
-                          ? "bg-[#0066cc] text-white rounded-full scale-110 shadow-lg"
+                          ? "bg-cyan-500 text-white rounded-full scale-110 shadow-lg"
                           : "text-gray-300 hover:bg-white/10 rounded-full cursor-default"
                       }`}
                     >
@@ -186,7 +186,7 @@ export const Footer = () => {
       <div className="bg-[#071121] py-6 border-t border-white/5">
         <div className="container mx-auto px-6 text-center md:text-left">
           <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-            © Copyright 2026 Bangladesh Technical Education Technology. All
+            © Copyright 2026 Bangladesh National Youth Technical Institute. All
             Rights Reserved
           </p>
         </div>

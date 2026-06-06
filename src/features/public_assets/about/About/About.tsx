@@ -30,7 +30,7 @@ export default function About() {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-32">
-        <Loader2 className="animate-spin text-[#678E1A]" size={32} />
+        <Loader2 className="animate-spin text-emerald-600 dark:text-emerald-400" size={32} />
       </div>
     );
   }
@@ -78,7 +78,7 @@ export default function About() {
                 </h2>
               )}
               {item.name && (
-                <p className="text-sm font-semibold text-[#678E1A] uppercase tracking-widest">
+                <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
                   {item.name}
                 </p>
               )}
@@ -91,7 +91,7 @@ export default function About() {
               {isLong && (
                 <button
                   onClick={() => setModalItem(item)}
-                  className="mt-1 text-sm font-medium text-[#678E1A] border border-[#678E1A] rounded-lg px-4 py-1.5 hover:bg-[#678E1A]/10 transition-colors"
+                  className="mt-1 text-sm font-medium text-emerald-600 border border-emerald-600 rounded-lg px-4 py-1.5 hover:bg-emerald-600/10 transition-colors"
                 >
                   Read More
                 </button>
@@ -123,7 +123,7 @@ export default function About() {
               <div className="flex items-center justify-between mb-4">
                 <div>
                   {modalItem.name && (
-                    <p className="text-xs font-semibold text-[#678E1A] uppercase tracking-widest mb-1">
+                    <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-1">
                       {modalItem.name}
                     </p>
                   )}

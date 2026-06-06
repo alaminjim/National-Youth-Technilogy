@@ -26,8 +26,8 @@ export const newsData: NewsItem[] = [
 ];
 
 export const impactData: ImpactStat[] = [
-  { value: 45, label: "CODING", color: "#678E1A" },
-  { value: 60, label: "SEO & ADS", color: "#f87171" },
-  { value: 75, label: "BRANDING", color: "#84cc16" },
-  { value: 80, label: "WEB DESIGN", color: "#0a192f" },
+  { value: 45, label: "CODING", color: "#00bcd4", subtitle: "ওয়েব ও অ্যাপ ডেভেলপমেন্টে দক্ষ শিক্ষার্থী", icon: "💻" },
+  { value: 60, label: "SEO & ADS", color: "#4caf50", subtitle: "ডিজিটাল মার্কেটিং ও SEO বিশেষজ্ঞ", icon: "📈" },
+  { value: 75, label: "BRANDING", color: "#00acc1", subtitle: "ব্র্যান্ড ডিজাইন ও ক্রিয়েটিভ আর্ট প্রফেশনাল", icon: "🎨" },
+  { value: 80, label: "WEB DESIGN", color: "#43a047", subtitle: "UI/UX ডিজাইনে সফল গ্র্যাজুয়েট", icon: "🖥️" },
 ];

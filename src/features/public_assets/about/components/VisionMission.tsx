@@ -16,7 +16,7 @@ export default function VisionMission() {
     {
       title: "Our Values",
       icon: <ShieldCheck className="w-6 h-6 text-blue-500" />,
-      text: "Bangladesh Technical Education Technology, our values guide every lesson and lab session—building professional integrity, fostering curiosity, and driving excellence in technical expertise.",
+      text: "Bangladesh National Youth Technical Institute, our values guide every lesson and lab session—building professional integrity, fostering curiosity, and driving excellence in technical expertise.",
     },
   ];
 

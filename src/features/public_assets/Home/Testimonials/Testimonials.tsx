@@ -31,7 +31,7 @@ export default function Testimonials() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
-            INSTITUTE <span className="text-[#678E1A]">GALLERY</span>
+            INSTITUTE <span className="text-emerald-600 dark:text-emerald-400">GALLERY</span>
           </h2>
         </div>
 
