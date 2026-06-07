@@ -1,7 +1,11 @@
 import ExamPageClient from "@/features/AdminDashboard/exam/components/ExamPageClient";
 import ExamResultList from "@/features/AdminDashboard/exam/components/ExamResultList";
-import { getAllQuestionsAction, getAllResultsAction } from "@/features/AdminDashboard/exam/exam.actions";
+import {
+  getAllQuestionsAction,
+  getAllResultsAction,
+} from "@/features/AdminDashboard/exam/exam.actions";
 
+export const dynamic = "force-dynamic";
 
 const ExamPage = async () => {
   const questions = await getAllQuestionsAction();
@@ -15,7 +19,7 @@ const ExamPage = async () => {
           Exam Management
         </h2>
         <p className="text-stone-400 text-sm font-medium mt-2">
-          Question যোগ করো এবং Result 
+          Question যোগ করো এবং Result
         </p>
       </header>
 
