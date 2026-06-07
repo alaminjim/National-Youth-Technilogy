@@ -1,13 +1,18 @@
 "use client";
 
+import { useMemo } from "react";
 import dynamic from "next/dynamic";
-import animationData from "@/animations/about-us.json";
+import rawAnimationData from "@/animations/about-us.json";
 import Link from "next/link";
 import { PhoneCall, Sparkles } from "lucide-react";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false, loading: () => null });
 
 export default function LoadingScreen() {
+  const animationData = useMemo(() => {
+    return JSON.parse(JSON.stringify(rawAnimationData));
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-green-50/70 via-emerald-50/30 to-white dark:from-[#03140e] dark:via-[#070c0a] dark:to-[#070707] transition-colors duration-500 flex items-center justify-center border-b border-gray-150 dark:border-white/5 py-12 md:py-20 lg:py-28">
       <style>{`
