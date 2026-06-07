@@ -425,7 +425,7 @@ export const AdmitCardModal = ({
                 style={{
                   position: "absolute",
                   top: "22.9cqw",
-                  right: "16.16cqw",
+                  left: "70%",
                   width: "20.2cqw",
                   display: "flex",
                   flexDirection: "column",
@@ -561,7 +561,7 @@ export const AdmitCardModal = ({
                 style={{
                   position: "absolute",
                   bottom: "7.0cqw",
-                  left: "61.8cqw",
+                  left: "87%",
                   transform: "translateX(-50%)",
                   width: "7.2cqw",
                   height: "7.2cqw",

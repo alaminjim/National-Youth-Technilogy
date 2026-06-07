@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 "use client";
@@ -895,20 +896,19 @@ body { margin: 0; font-family: Arial, sans-serif; }
               year: "numeric",
             });
             const P = {
-              slNo: { top: "37.9%", left: "17%" },
-              regNo: { top: "37.2%", left: "74.5%" },
-              session: { top: "41.8%", left: "70.5%" },
-              name: { top: "43.7%", left: "32.0%" },
-              father: { top: "48.3%", left: "28.0%" },
-              mother: { top: "53.4%", left: "18.5%" },
-              institute: { top: "58%", left: "19.5%" },
-              roll: { top: "63.2%", left: "27.0%" },
-              qual: { top: "63.2%", left: "50.0%" },
-              exam: { top: "67.8%", left: "41.5%" },
-              cgpa: { top: "68%", left: "77.5%" },
-              date1: { top: "80.2%", left: "25.0%" },
-              date2: { top: "82%", left: "18.5%" },
-              qr: { top: "23%", left: "80%" },
+              slNo: { top: "38.8%", left: "31.5%" },
+              regNo: { top: "35.9%", left: "74.5%" },
+              session: { top: "41.1%", left: "75.5%" },
+              name: { top: "46.9%", left: "49.0%" },
+              father: { top: "51%", left: "47%" },
+              mother: { top: "55.4%", left: "44.5%" },
+              institute: { top: "59.8%", left: "50.5%" },
+              roll: { top: "64.2%", left: "36.7%" },
+              qual: { top: "64%", left: "65%" },
+              exam: { top: "68.8%", left: "56.5%" },
+              cgpa: { top: "68.3%", left: "86.9%" },
+              date1: { top: "88%", left: "25.0%" },
+              qr: { top: "21%", left: "85%" },
             };
             return (
               <div
@@ -1093,20 +1093,6 @@ body { margin: 0; font-family: Arial, sans-serif; }
                       position: "absolute",
                       top: P.date1.top,
                       left: P.date1.left,
-                      fontSize: "1.1cqw",
-                      fontWeight: 700,
-                      fontStyle: "italic",
-                      color: "#000",
-                    }}
-                  >
-                    {today}
-                  </div>
-                  {/* Date 2 */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: P.date2.top,
-                      left: P.date2.left,
                       fontSize: "1.1cqw",
                       fontWeight: 700,
                       fontStyle: "italic",

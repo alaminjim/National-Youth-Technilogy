@@ -357,8 +357,6 @@ function Sheet({
 
   const gridCols = "1fr 1fr";
 
-
-
   return (
     <div
       className="transcript-sheet"
@@ -407,10 +405,10 @@ function Sheet({
       {/* Serial No */}
       <div
         style={{
-          fontSize: "8px",
+          fontSize: "9px",
           fontWeight: "bold",
           color: "#000",
-          marginBottom: "4px",
+          marginTop: "16px",
           paddingLeft: "40px",
           paddingTop: "8px",
         }}
@@ -439,6 +437,7 @@ function Sheet({
             display: "flex",
             flexDirection: "column",
             gap: "1.5px",
+            marginTop: "5px",
           }}
         >
           <InfoRow label="Name of Student" value={student?.name} />
@@ -462,6 +461,7 @@ function Sheet({
             flexDirection: "column",
             gap: "1.5px",
             paddingLeft: "10px",
+            marginTop: "5px",
           }}
         >
           <InfoRow label="Roll No" value={student?.roll} />
@@ -830,18 +830,6 @@ function Sheet({
             </span>
           </div>
         </div>
-        <p
-          style={{
-            color: "#cc0000",
-            fontSize: "7.5px",
-            fontWeight: 700,
-            textAlign: "center",
-            marginTop: "10px",
-            letterSpacing: "0.03em",
-          }}
-        >
-          For verification please visit BNTEI website: www.bntei.com
-        </p>
       </div>
     </div>
   );

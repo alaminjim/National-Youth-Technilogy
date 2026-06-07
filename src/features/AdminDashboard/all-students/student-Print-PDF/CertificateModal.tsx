@@ -21,8 +21,6 @@ export const CertificateModal = ({
     year: "numeric",
   });
 
-
-
   const monthName = (m: string | number) => {
     const months = [
       "Jan",
@@ -43,20 +41,19 @@ export const CertificateModal = ({
   };
 
   const P = {
-    slNo: { top: "37.9%", left: "17%" },
-    regNo: { top: "37.2%", left: "74.5%" },
-    session: { top: "41.8%", left: "70.5%" },
-    name: { top: "43.7%", left: "32.0%" },
-    father: { top: "48.3%", left: "28.0%" },
-    mother: { top: "53.4%", left: "18.5%" },
-    institute: { top: "58%", left: "19.5%" },
-    roll: { top: "63.2%", left: "27.0%" },
-    qual: { top: "63.2%", left: "50.0%" },
-    exam: { top: "67.8%", left: "41.5%" },
-    cgpa: { top: "68%", left: "77.5%" },
-    date1: { top: "80.2%", left: "25.0%" },
-    date2: { top: "82%", left: "18.5%" },
-    qr: { top: "23%", left: "80%" },
+    slNo: { top: "38.2%", left: "31.5%" },
+    regNo: { top: "35.2%", left: "74.5%" },
+    session: { top: "40.6%", left: "72.5%" },
+    name: { top: "45.9%", left: "49.0%" },
+    father: { top: "50.6%", left: "47%" },
+    mother: { top: "54.9%", left: "44.5%" },
+    institute: { top: "59.2%", left: "50.5%" },
+    roll: { top: "63.8%", left: "36.7%" },
+    qual: { top: "63.6%", left: "65%" },
+    exam: { top: "68%", left: "56.5%" },
+    cgpa: { top: "68.3%", left: "86.9%" },
+    date1: { top: "88%", left: "25.0%" },
+    qr: { top: "21%", left: "85%" },
   };
 
   const handleDownload = () => {
@@ -115,7 +112,6 @@ export const CertificateModal = ({
     <div class="f" style="top:${P.exam.top}; left:${P.exam.left};">${monthName(student.month1)} ${student.year1}</div>
     <div class="f" style="top:${P.cgpa.top}; left:${P.cgpa.left};">—</div>
     <div class="f" style="top:${P.date1.top}; left:${P.date1.left}; font-size:8.5pt;">${today}</div>
-    <div class="f" style="top:${P.date2.top}; left:${P.date2.left}; font-size:8.5pt;">${today}</div>
     <div class="qr-block">
       ${qrSvgString}
       <span style="font-size:5.5pt; font-weight:700; color:#000; text-align:center;">Verify Online</span>
@@ -407,13 +403,6 @@ export const CertificateModal = ({
               {/* Dates */}
               <div
                 style={fieldStyle(P.date1.top, P.date1.left, {
-                  fontSize: "0.6vw",
-                })}
-              >
-                {today}
-              </div>
-              <div
-                style={fieldStyle(P.date2.top, P.date2.left, {
                   fontSize: "0.6vw",
                 })}
               >
