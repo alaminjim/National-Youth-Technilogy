@@ -34,9 +34,12 @@ export default function LoginPage() {
       <div className="w-full max-w-sm p-8 space-y-5 border border-gray-200 dark:border-gray-700 rounded-3xl bg-white dark:bg-gray-900 shadow-xl">
         {/* ── Avatar ── */}
         <div className="flex flex-col items-center gap-2">
-          <Link href="/" className="w-24 h-24 rounded-full bg-blue-50 dark:bg-blue-900/30 border-4 border-blue-100 dark:border-blue-800 flex items-center justify-center overflow-hidden">
+          <Link
+            href="/"
+            className="w-24 h-24 rounded-full bg-blue-50 dark:bg-blue-900/30 border-4 border-blue-100 dark:border-blue-800 flex items-center justify-center overflow-hidden"
+          >
             <Image
-              src="/image.png"
+              src="https://i.ibb.co/QvN5MgHY/Whats-App-Image-2026-06-05-at-8-38-25-PM-removebg-preview.png"
               alt="Student"
               width={96}
               height={96}

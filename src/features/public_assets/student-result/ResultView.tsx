@@ -2,11 +2,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { getSemesterGrade, Mark } from "@/features/AdminDashboard/all-students/markStudent/types/markStudent.types";
+import {
+  getSemesterGrade,
+  Mark,
+} from "@/features/AdminDashboard/all-students/markStudent/types/markStudent.types";
 
 export default function ResultView({ result }: { result: any }) {
   const marks: Mark[] = result.marks ?? [];
-  const avgCgpa = marks.length > 0 ? marks.reduce((acc, m) => acc + m.cgpa, 0) / marks.length : 0;
+  const avgCgpa =
+    marks.length > 0
+      ? marks.reduce((acc, m) => acc + m.cgpa, 0) / marks.length
+      : 0;
   const totalCredit = marks.reduce((acc, m) => acc + m.totalCredit, 0);
 
   return (
@@ -30,12 +36,11 @@ export default function ResultView({ result }: { result: any }) {
           fontFamily: "sans-serif",
         }}
       >
-       
         <div className="border-b border-slate-300 p-4 sm:p-6 print:p-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-3 text-center md:text-left print:flex-row print:text-left">
             <div className="flex justify-center shrink-0 print:justify-start">
               <img
-                src="https://i.ibb.co.com/r2dVnpdh/Screenshot-from-2026-03-04-16-25-16-removebg-preview.png"
+                src="https://i.ibb.co.com/QvN5MgHY/Whats-App-Image-2026-06-05-at-8-38-25-PM-removebg-preview.png"
                 alt="Logo"
                 className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
               />
@@ -46,7 +51,7 @@ export default function ResultView({ result }: { result: any }) {
                 Government of the People&apos;s Republic of Bangladesh
               </p>
               <h2 className="text-xs sm:text-sm md:text-base font-black text-slate-800 uppercase mt-1 mb-0 leading-tight">
-                Bangladesh Technical Education Institute
+                BANGLADESH NATIONAL Youth Technical Institute
               </h2>
               <h3 className="text-base sm:text-lg md:text-xl font-black text-slate-900 uppercase tracking-widest mt-1.5 mb-0">
                 RESULT SHEET
@@ -545,10 +550,26 @@ export default function ResultView({ result }: { result: any }) {
 function InfoRow({ label, value }: { label: string; value?: string | null }) {
   return (
     <tr style={{ borderBottom: "1px solid #f1f5f9" }}>
-      <td style={{ padding: "4px 16px 4px 0", fontWeight: 700, color: "#475569", fontSize: 11, whiteSpace: "nowrap", width: 140 }}>
+      <td
+        style={{
+          padding: "4px 16px 4px 0",
+          fontWeight: 700,
+          color: "#475569",
+          fontSize: 11,
+          whiteSpace: "nowrap",
+          width: 140,
+        }}
+      >
         {label}
       </td>
-      <td style={{ padding: "4px 0", color: "#1e293b", fontWeight: 600, fontSize: 11 }}>
+      <td
+        style={{
+          padding: "4px 0",
+          color: "#1e293b",
+          fontWeight: 600,
+          fontSize: 11,
+        }}
+      >
         {value || "—"}
       </td>
     </tr>

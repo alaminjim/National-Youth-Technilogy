@@ -41,7 +41,7 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
   return (
     <div
       ref={ringRef}
-      className="flex flex-col items-center rounded-2xl overflow-hidden transition-all duration-300 group hover:-translate-y-2 bg-white"
+      className="flex flex-col items-center rounded-2xl overflow-hidden transition-all duration-300 group hover:-translate-y-2 bg-white dark:bg-gray-900 border border-transparent dark:border-gray-800"
       style={{
         boxShadow: `0 2px 20px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04)`,
       }}
@@ -63,7 +63,6 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
 
         {/* Ring */}
         <div className="relative flex items-center justify-center mb-6">
-          {/* Glow on hover */}
           <div
             className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 scale-90"
             style={{ background: color }}
@@ -72,7 +71,6 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
             className="w-36 h-36 -rotate-90 relative z-10"
             viewBox="0 0 128 128"
           >
-            {/* Track */}
             <circle
               cx="64"
               cy="64"
@@ -81,7 +79,6 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
               strokeWidth="9"
               fill="transparent"
             />
-            {/* Progress */}
             <circle
               cx="64"
               cy="64"
@@ -98,7 +95,6 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
               }}
             />
           </svg>
-          {/* Center text */}
           <div className="absolute flex flex-col items-center leading-none z-20">
             <span
               className="text-3xl font-black tracking-tight"
@@ -106,7 +102,7 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
             >
               {count}%
             </span>
-            <span className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mt-0.5">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mt-0.5">
               Complete
             </span>
           </div>
@@ -119,13 +115,13 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
         />
 
         {/* Label */}
-        <h4 className="text-[12px] font-black uppercase tracking-[0.18em] text-gray-800 mb-2 text-center">
+        <h4 className="text-[12px] font-black uppercase tracking-[0.18em] text-gray-800 dark:text-gray-100 mb-2 text-center">
           {label}
         </h4>
 
         {/* Subtitle */}
         {subtitle && (
-          <p className="text-[11px] text-gray-400 text-center leading-relaxed">
+          <p className="text-[11px] text-gray-400 dark:text-gray-500 text-center leading-relaxed">
             {subtitle}
           </p>
         )}
@@ -166,7 +162,6 @@ export default function CircularProgress() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Highlight Card */}
           <div className="relative overflow-hidden bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 p-8 flex flex-col justify-between rounded-2xl shadow-xl shadow-emerald-950/10 border border-emerald-850 text-white min-h-[280px] group/feat">
-            {/* Background design elements */}
             <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl group-hover/feat:scale-125 transition-transform duration-500 pointer-events-none" />
             <div className="absolute -left-10 -top-10 w-32 h-32 bg-emerald-450/5 rounded-full blur-xl pointer-events-none" />
 
@@ -206,7 +201,6 @@ export default function CircularProgress() {
               className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800/60 rounded-2xl p-6 flex flex-col gap-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default"
             >
               <div className="flex gap-4 items-start">
-                {/* Date Badge */}
                 <div className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/30 text-emerald-700 dark:text-emerald-400 min-w-[56px] h-14 flex flex-col items-center justify-center rounded-xl shrink-0">
                   <span className="text-xl font-black tracking-tight leading-none mb-0.5">
                     {news.date}
@@ -238,61 +232,48 @@ export default function CircularProgress() {
 
       {/* ── Start Project ── */}
       <section className="relative overflow-hidden py-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-gray-950 dark:via-slate-900 dark:to-gray-950 border-y border-gray-200/60 dark:border-gray-800">
-        {/* Subtle grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-[size:4rem_4rem] dark:bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] pointer-events-none" />
         <div className="absolute -left-20 -top-20 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -right-20 -bottom-20 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Text & Features */}
             <div className="lg:col-span-6 space-y-6 text-left">
               <span className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/50 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Launch Your Journey
               </span>
 
-              <h2 className="text-3xl md:text-5xl font-black text-gray-905 dark:text-white uppercase leading-tight tracking-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white uppercase leading-tight tracking-tight">
                 Start Your <br />
                 <span className="text-emerald-600 dark:text-emerald-400">
                   New Project
                 </span>
               </h2>
 
-              <p className="text-gray-500 dark:text-gray-405 text-sm leading-relaxed max-w-lg">
+              <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-lg">
                 ভবিষ্যতের দক্ষ আইটি পেশাদার হিসেবে নিজেকে তৈরি করতে অথবা আপনার
                 প্রতিষ্ঠানের জন্য কোনো প্রশ্ন থাকলে আমাদের সাথে যোগাযোগ করুন।
               </p>
 
               <div className="space-y-4 pt-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xs font-bold">
-                    ✓
+                {[
+                  "২৪ ঘণ্টার মধ্যে নিশ্চিত ফিডব্যাক",
+                  "অভিজ্ঞ পরামর্শকদের মাধ্যমে ফ্রী ক্যারিয়ার কাউন্সেলিং",
+                  "ব্রাঞ্চ ও কোর্স রেজিস্ট্রেশনের সকল গাইডলাইন",
+                ].map((text) => (
+                  <div key={text} className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xs font-bold">
+                      ✓
+                    </div>
+                    <span className="text-xs font-bold text-gray-700 dark:text-gray-300">
+                      {text}
+                    </span>
                   </div>
-                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">
-                    ২৪ ঘণ্টার মধ্যে নিশ্চিত ফিডব্যাক
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xs font-bold">
-                    ✓
-                  </div>
-                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">
-                    অভিজ্ঞ পরামর্শকদের মাধ্যমে ফ্রী ক্যারিয়ার কাউন্সেলিং
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xs font-bold">
-                    ✓
-                  </div>
-                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">
-                    ব্রাঞ্চ ও কোর্স রেজিস্ট্রেশনের সকল গাইডলাইন
-                  </span>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Right Column: Premium Form Card */}
             <div className="lg:col-span-6">
               <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-200/70 dark:border-gray-800 shadow-xl shadow-gray-100/50 dark:shadow-none space-y-6">
                 <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase tracking-wider border-b border-gray-100 dark:border-white/5 pb-4">
@@ -300,38 +281,34 @@ export default function CircularProgress() {
                 </h3>
 
                 <div className="space-y-4">
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Enter your name"
-                      className="w-full bg-gray-50 dark:bg-black/30 hover:bg-gray-100/60 focus:bg-white border border-gray-200 dark:border-white/10 focus:border-emerald-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-650 px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-1 focus:ring-emerald-500/50"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full bg-gray-50 dark:bg-black/30 hover:bg-gray-100/60 focus:bg-white border border-gray-200 dark:border-white/10 focus:border-emerald-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-650 px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-1 focus:ring-emerald-500/50"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      placeholder="Enter your phone number"
-                      className="w-full bg-gray-50 dark:bg-black/30 hover:bg-gray-100/60 focus:bg-white border border-gray-200 dark:border-white/10 focus:border-emerald-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-650 px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-1 focus:ring-emerald-500/50"
-                    />
-                  </div>
+                  {[
+                    {
+                      label: "Name",
+                      type: "text",
+                      placeholder: "Enter your name",
+                    },
+                    {
+                      label: "Email Address",
+                      type: "email",
+                      placeholder: "Enter your email",
+                    },
+                    {
+                      label: "Phone Number",
+                      type: "tel",
+                      placeholder: "Enter your phone number",
+                    },
+                  ].map((field) => (
+                    <div key={field.label} className="space-y-1">
+                      <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                        {field.label}
+                      </label>
+                      <input
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        className="w-full bg-gray-50 dark:bg-black/30 hover:bg-gray-100/60 focus:bg-white dark:focus:bg-gray-800 border border-gray-200 dark:border-white/10 focus:border-emerald-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-1 focus:ring-emerald-500/50"
+                      />
+                    </div>
+                  ))}
                 </div>
 
                 <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 rounded-xl font-black uppercase text-xs tracking-widest transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-0.5 cursor-pointer mt-2">
@@ -344,12 +321,10 @@ export default function CircularProgress() {
       </section>
 
       {/* ── Impact Rings ── */}
-      <section className="relative overflow-hidden py-24 bg-gradient-to-br from-slate-50 via-white to-cyan-50/30">
-        {/* Decorative blur orbs */}
+      <section className="relative overflow-hidden py-24 bg-gradient-to-br from-slate-50 via-white to-cyan-50/30 dark:from-gray-950 dark:via-slate-900 dark:to-gray-950">
         <div className="absolute -left-32 top-0 w-96 h-96 bg-cyan-400/8 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -right-32 bottom-0 w-96 h-96 bg-emerald-400/8 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Subtle dot grid pattern */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.035]"
           style={{
@@ -360,8 +335,7 @@ export default function CircularProgress() {
         />
 
         <div className="relative z-10 container mx-auto px-6 text-center">
-          {/* Badge */}
-          <span className="inline-flex items-center gap-2 bg-green-50 border border-[#059669] rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-[#059669] mb-5">
+          <span className="inline-flex items-center gap-2 bg-green-50 dark:bg-green-950/30 border border-[#059669] dark:border-green-800 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-[#059669] dark:text-green-400 mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#059669] animate-pulse" />
             Our Performance
           </span>
@@ -369,7 +343,7 @@ export default function CircularProgress() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight mb-3">
             Our Global <span className="text-[#059669]">Impact</span>
           </h2>
-          <p className="text-gray-500 text-sm max-w-lg mx-auto mb-16 leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 text-sm max-w-lg mx-auto mb-16 leading-relaxed">
             বাংলাদেশের সেরা প্রযুক্তি প্রশিক্ষণ কেন্দ্র হিসেবে আমাদের অর্জনের
             একটি সংক্ষিপ্ত চিত্র।
           </p>
@@ -384,7 +358,6 @@ export default function CircularProgress() {
 
       {/* ── Apply Now ── */}
       <section className="relative overflow-hidden py-0">
-        {/* Main CTA card */}
         <div
           className="relative mx-6 lg:mx-12 xl:mx-20 rounded-3xl overflow-hidden my-12"
           style={{
@@ -392,7 +365,6 @@ export default function CircularProgress() {
               "linear-gradient(135deg, #0097a7 0%, #00bcd4 40%, #4caf50 100%)",
           }}
         >
-          {/* Decorative background circles */}
           <div className="absolute -top-16 -right-16 w-64 h-64 bg-white/10 rounded-full pointer-events-none" />
           <div className="absolute -bottom-20 -left-10 w-72 h-72 bg-white/8 rounded-full pointer-events-none" />
           <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-40 h-40 bg-white/5 rounded-full pointer-events-none" />
@@ -400,7 +372,6 @@ export default function CircularProgress() {
           <div className="absolute bottom-6 right-60 w-2 h-2 bg-white/40 rounded-full" />
           <div className="absolute top-8 left-1/2 w-1.5 h-1.5 bg-white/30 rounded-full" />
 
-          {/* Grid pattern overlay */}
           <div
             className="absolute inset-0 pointer-events-none opacity-[0.06]"
             style={{
@@ -412,9 +383,7 @@ export default function CircularProgress() {
 
           <div className="relative z-10 px-8 py-12 lg:px-16 lg:py-14">
             <div className="flex flex-col lg:flex-row items-center gap-10">
-              {/* Left: Text */}
               <div className="flex-1 text-center lg:text-left">
-                {/* Badge */}
                 <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.25em] text-white mb-5">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   Registration Now Open
@@ -431,9 +400,7 @@ export default function CircularProgress() {
                 </p>
               </div>
 
-              {/* Right: Stats + Buttons */}
               <div className="flex flex-col items-center lg:items-end gap-6 shrink-0">
-                {/* Mini stats */}
                 <div className="flex items-center gap-6">
                   {[
                     { value: "৫০০০+", label: "শিক্ষার্থী" },
@@ -451,10 +418,8 @@ export default function CircularProgress() {
                   ))}
                 </div>
 
-                {/* Divider */}
                 <div className="w-full h-px bg-white/20" />
 
-                {/* Buttons */}
                 <div className="flex flex-col sm:flex-row items-center gap-3">
                   <Link
                     href="/register"
