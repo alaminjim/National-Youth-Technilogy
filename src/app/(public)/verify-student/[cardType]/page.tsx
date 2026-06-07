@@ -8,7 +8,6 @@ import { useParams, useSearchParams, useRouter } from "next/navigation";
 import { Loader2, AlertTriangle, Printer, ArrowLeft } from "lucide-react";
 import { getResultByRollAction } from "@/features/public_assets/student-result/actions.ts";
 import Link from "next/link";
-import QRCode from "react-qr-code";
 
 // Helper: format ISO date to readable string
 const formatDOB = (dob: string): string => {
@@ -67,10 +66,6 @@ const CardQRCode = ({ value, size = 60 }: { value: string; size?: number }) => {
   if (!mounted) {
     return <div style={{ width: size, height: size }} />;
   }
-
-  return (
-    <QRCode value={value} size={size} bgColor="#ffffff" fgColor="#000000" />
-  );
 };
 
 function VerificationPortalContent() {
@@ -908,7 +903,6 @@ body { margin: 0; font-family: Arial, sans-serif; }
               exam: { top: "68.8%", left: "56.5%" },
               cgpa: { top: "68.3%", left: "86.9%" },
               date1: { top: "88%", left: "25.0%" },
-              qr: { top: "59%", left: "12%" },
             };
             return (
               <div
@@ -1100,24 +1094,6 @@ body { margin: 0; font-family: Arial, sans-serif; }
                     }}
                   >
                     {today}
-                  </div>
-
-                  {/* QR Code */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: P.qr.top,
-                      left: P.qr.left,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: "2px",
-                    }}
-                  >
-                    <CardQRCode
-                      value={`${typeof window !== "undefined" ? window.location.origin : ""}/verify-student/certificate?roll=${student.roll || ""}`}
-                      size={52}
-                    />
                   </div>
                 </div>
               </div>

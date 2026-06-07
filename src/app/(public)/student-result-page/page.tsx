@@ -49,7 +49,6 @@ function StudentResultContent() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 transition-colors duration-300">
-
       {/* ── Hero Header ── */}
       <div className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-green-700 to-teal-700 pt-16 pb-28 px-6 text-center">
         <div className="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/5" />
@@ -70,23 +69,22 @@ function StudentResultContent() {
       {/* ── Search Card (overlapping hero) ── */}
       <div className="max-w-2xl mx-auto px-4 -mt-14 relative z-10">
         <div className="print:hidden bg-white dark:bg-gray-900 rounded-3xl shadow-2xl shadow-emerald-900/20 border border-gray-100 dark:border-gray-800 p-6 md:p-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-
-          <div className="flex items-center gap-2 overflow-hidden rounded-2xl border-2 border-gray-200 dark:border-gray-700 focus-within:border-emerald-500 dark:focus-within:border-emerald-500 transition-all bg-gray-50 dark:bg-gray-800">
+          <div className="flex items-center gap-2  rounded-2xl border-2 border-gray-200 dark:border-gray-700 focus-within:border-emerald-500 dark:focus-within:border-emerald-500 transition-all bg-gray-50 dark:bg-gray-800">
             <div className="pl-4 text-gray-400 shrink-0">
               <Search size={18} />
             </div>
             <input
               type="text"
-              placeholder="স্টুডেন্ট রোল নম্বর লিখুন..."
+              placeholder="রোল নম্বর লিখুন..."
               value={roll}
               onChange={(e) => setRoll(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              className="flex-1 bg-transparent text-gray-700 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 px-3 py-4 outline-none font-semibold text-sm sm:text-base"
+              className="flex-1 min-w-0 bg-transparent text-gray-700 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 px-3 py-4 outline-none font-semibold text-sm sm:text-base"
             />
             <button
               onClick={handleSearch}
               disabled={loading}
-              className="m-1.5 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white font-black text-sm transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap"
+              className="m-1.5 px-3 sm:px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white font-black text-xs sm:text-sm transition-all shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:scale-105 active:scale-95 flex items-center gap-2 whitespace-nowrap shrink-0"
             >
               {loading ? (
                 <Loader2 size={16} className="animate-spin" />
@@ -138,9 +136,14 @@ export default function StudentResultPage() {
           <div className="flex flex-col items-center gap-4">
             <div className="relative w-16 h-16 flex items-center justify-center">
               <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-ping" />
-              <Loader2 className="animate-spin text-emerald-500 relative z-10" size={32} />
+              <Loader2
+                className="animate-spin text-emerald-500 relative z-10"
+                size={32}
+              />
             </div>
-            <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">লোড হচ্ছে...</p>
+            <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest">
+              লোড হচ্ছে...
+            </p>
           </div>
         </div>
       }
