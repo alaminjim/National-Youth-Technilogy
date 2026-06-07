@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Loader2, CloudUpload, CheckCircle2, UserCircle } from "lucide-react";
+import { Loader2, CloudUpload, CheckCircle2, UserCircle, Shield, FileText } from "lucide-react";
 import { uploadToCloudinary } from "@/core/upload-image-function/upload.service";
 import { IStudentFormInput } from "../students.type";
 import { createStudentSchema } from "../students.schema";
@@ -74,40 +74,45 @@ export default function StudentAddForm() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-4 md:p-8 bg-gray-50 dark:bg-slate-950 min-h-screen">
-      <div className="bg-white dark:bg-slate-900 shadow-sm border border-gray-200 dark:border-slate-800 rounded-lg">
-        <div className="text-center py-8 border-b border-gray-100 dark:border-slate-800 px-4">
-          <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">
-            Please fill up the details to apply for admission to
+    <div className="max-w-5xl mx-auto p-4 md:p-8 bg-gray-50/50 dark:bg-transparent min-h-screen">
+      <div className="bg-white dark:bg-gray-900 shadow-xl shadow-green-950/[0.01] dark:shadow-none border border-gray-150 dark:border-white/5 rounded-[2.5rem] overflow-hidden">
+        
+        {/* Top Header */}
+        <div className="text-center py-10 border-b border-gray-100 dark:border-white/5 px-4 space-y-2">
+          <p className="text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase tracking-[0.2em] mb-1">
+            Student Enrollment System
           </p>
-          <h1 className="text-xl md:text-2xl font-black text-[#1e40af] uppercase">
+          <h1 className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-700 uppercase">
             Bangladesh National Youth Technical Institute
           </h1>
-          <h2 className="text-2xl font-black text-slate-800 dark:text-white uppercase mt-1">
-            Admission Registration
+          <h2 className="text-lg md:text-xl font-bold text-slate-700 dark:text-white uppercase tracking-wide font-sans">
+            Admission & Registration Form
           </h2>
+          <div className="w-12 h-1 bg-green-600 rounded-full mx-auto mt-3" />
         </div>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="p-6 md:p-10 space-y-10"
         >
-          <div className="space-y-6">
-            <div className="bg-[#1e40af] text-white py-2 px-4 font-bold text-lg">
-              Personal Details
+          {/* Form Content Block */}
+          <div className="space-y-8">
+            <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3.5 px-6 font-black text-base uppercase tracking-wider rounded-2xl shadow-md flex items-center gap-2.5">
+              <FileText size={18} />
+              <span>Personal Details</span>
             </div>
 
-            <div className="border-b-2 border-[#1e40af] pb-1">
-              <span className="text-sm font-black text-slate-700 dark:text-slate-200 uppercase">
+            <div className="border-b border-emerald-500/30 pb-2">
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-sans">
                 About the Applicant
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-sans">
               {STUDENT_FORM_FIELDS.filter((f) => f.name !== "picture").map(
                 (field, i) => (
-                  <div key={field.name} className="space-y-1.5">
-                    <label className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase">
+                  <div key={field.name} className="space-y-2">
+                    <label className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide block">
                       {i + 1}. {field.label}{" "}
                       <span className="text-red-500">*</span>
                     </label>
@@ -115,7 +120,7 @@ export default function StudentAddForm() {
                     {field.type === "select" ? (
                       <select
                         {...register(field.name as any)}
-                        className="w-full h-11 px-3 text-sm bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-sm outline-none focus:ring-2 focus:ring-blue-500/20"
+                        className="w-full h-11 px-3 text-sm bg-gray-50 dark:bg-gray-950 border border-gray-150 dark:border-white/5 rounded-xl outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/10 transition-all font-semibold"
                       >
                         <option value="">Select {field.label}</option>
                         {field.options?.map((opt) => (
@@ -129,7 +134,7 @@ export default function StudentAddForm() {
                         {...register(field.name as any)}
                         type={field.type}
                         placeholder={field.placeholder}
-                        className="h-11 bg-gray-50 dark:bg-slate-800 border-gray-200 dark:border-slate-700 rounded-sm focus-visible:ring-2 focus-visible:ring-blue-500/20"
+                        className="h-11 bg-gray-50 dark:bg-gray-950 border-gray-150 dark:border-white/5 rounded-xl focus-visible:ring-2 focus-visible:ring-green-500/10 focus-visible:border-green-500/50 transition-all text-sm font-semibold"
                       />
                     )}
 
@@ -144,19 +149,21 @@ export default function StudentAddForm() {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 items-end">
-            <div className="flex-1 space-y-4">
-              <p className="text-xs font-bold text-blue-600 uppercase border-b border-dashed border-blue-300 pb-1">
-                Security & Verification
+          {/* Verification Box & Profile Photo Upload */}
+          <div className="flex flex-col md:flex-row gap-8 items-center md:items-end justify-between border-t border-gray-100 dark:border-white/5 pt-8">
+            <div className="flex-1 space-y-3 max-w-2xl">
+              <p className="text-xs font-bold text-green-600 dark:text-emerald-400 uppercase border-b border-dashed border-green-200 dark:border-green-800/40 pb-1 flex items-center gap-1.5 font-sans">
+                <Shield size={14} />
+                Security & Data Verification
               </p>
-              <p className="text-sm text-gray-500 italic">
-                Please double check all information before submitting. Once
-                submitted, some fields might require admin approval to change.
+              <p className="text-sm text-gray-400 dark:text-gray-500 leading-relaxed font-sans font-light">
+                Please double-check all fields before submitting. Once processed, academic documents, student IDs, and credentials will be generated automatically matching the spelling provided above.
               </p>
             </div>
 
-            <div className="w-full md:w-44">
-              <div className="relative w-32 h-40 mx-auto border-2 border-dashed border-gray-300 dark:border-slate-700 rounded-md bg-gray-50 dark:bg-slate-800 flex items-center justify-center overflow-hidden group">
+            {/* Photo upload container */}
+            <div className="w-full md:w-48 shrink-0 flex flex-col items-center">
+              <div className="relative w-36 h-44 border-2 border-dashed border-gray-250 dark:border-white/10 rounded-2xl bg-gray-50 dark:bg-gray-950 flex items-center justify-center overflow-hidden group transition-all hover:border-green-500/40 cursor-pointer">
                 {preview ? (
                   <img
                     src={preview}
@@ -164,9 +171,9 @@ export default function StudentAddForm() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="text-center text-gray-400">
-                    <UserCircle size={40} className="mx-auto" />
-                    <span className="text-[8px] font-black uppercase block mt-1">
+                  <div className="text-center text-gray-400 dark:text-gray-500 space-y-2">
+                    <UserCircle size={44} className="mx-auto" />
+                    <span className="text-[9px] font-black uppercase tracking-wider block font-sans">
                       Student Photo
                     </span>
                   </div>
@@ -174,7 +181,7 @@ export default function StudentAddForm() {
 
                 {isUploading && (
                   <div className="absolute inset-0 bg-white/80 dark:bg-black/80 flex items-center justify-center">
-                    <Loader2 className="animate-spin text-blue-600" />
+                    <Loader2 className="animate-spin text-green-600" />
                   </div>
                 )}
 
@@ -185,19 +192,20 @@ export default function StudentAddForm() {
                   disabled={isUploading}
                 />
               </div>
-              <div className="mt-2 text-center">
-                <span className="bg-[#1e40af] text-white text-[9px] font-black px-4 py-1 rounded-sm uppercase tracking-tighter">
+              <div className="mt-3 text-center">
+                <span className={`text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider font-sans ${uploadedImageUrl ? "bg-emerald-600 text-white" : "bg-gray-100 dark:bg-white/5 text-gray-500"}`}>
                   {uploadedImageUrl ? "Ready to Submit" : "Upload Picture"}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="pt-10 border-t border-gray-100 dark:border-slate-800 text-center">
+          {/* Action Submission */}
+          <div className="pt-8 border-t border-gray-100 dark:border-white/5 text-center">
             <Button
               type="submit"
               disabled={isSubmitting || isUploading}
-              className="bg-[#1e40af] hover:bg-blue-800 text-white font-black px-16 py-7 text-xl uppercase rounded-sm shadow-xl transition-all active:scale-95 disabled:opacity-50"
+              className="bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 text-white font-black px-16 py-6 text-sm uppercase tracking-widest rounded-2xl shadow-lg shadow-green-600/25 transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 cursor-pointer"
             >
               {isSubmitting ? (
                 <span className="flex items-center gap-2">

@@ -10,6 +10,7 @@ import {
   Hash,
   ShieldAlert,
   RefreshCw,
+  Trophy,
 } from "lucide-react";
 import { ExamResult as ExamResultType } from "../types";
 
@@ -20,6 +21,18 @@ interface Props {
 
 const ExamResult = ({ result, student }: Props) => {
   const handleDownload = () => {
+    const percentage = parseFloat(result.percentage);
+    const grade =
+      percentage >= 80
+        ? "A+"
+        : percentage >= 70
+        ? "A"
+        : percentage >= 60
+        ? "B"
+        : percentage >= 50
+        ? "C"
+        : "F";
+
     const content = `
 ====================================
         EXAM RESULT CARD 🎯
@@ -31,22 +44,11 @@ Email      : ${student.email}
 ------------------------------------
 Score      : ${result.score}/${result.totalMarks}
 Percentage : ${result.percentage}%
-Grade      : ${
-      percentage >= 80
-        ? "A+"
-        : percentage >= 70
-          ? "A"
-          : percentage >= 60
-            ? "B"
-            : percentage >= 50
-              ? "C"
-              : "F"
-    }
+Grade      : ${grade}
 ------------------------------------
 Generated on: ${new Date().toLocaleDateString()}
 ====================================
     `;
-
     const blob = new Blob([content], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -61,173 +63,171 @@ Generated on: ${new Date().toLocaleDateString()}
   const getColorScheme = () => {
     if (percentage >= 80)
       return {
-        text: "text-emerald-500 dark:text-emerald-400",
-        bg: "bg-emerald-500",
-        lightBg: "bg-emerald-50 dark:bg-emerald-950/30",
-        border: "border-emerald-200 dark:border-emerald-900/50",
-        badge:
-          "bg-emerald-50 text-emerald-600 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-900/40",
-        gradient: "from-emerald-500 to-teal-500",
+        text: "text-emerald-600 dark:text-emerald-400",
+        gradientBar: "from-emerald-500 to-teal-500",
+        gradientHero: "from-emerald-600 via-green-700 to-teal-700",
+        ring: "ring-emerald-200 dark:ring-emerald-800",
+        badge: "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+        iconBg: "bg-emerald-50 dark:bg-emerald-900/30",
         emoji: "🎉",
+        label: "অসাধারণ!",
       };
     if (percentage >= 50)
       return {
-        text: "text-amber-500 dark:text-amber-400",
-        bg: "bg-amber-500",
-        lightBg: "bg-amber-50 dark:bg-amber-950/30",
-        border: "border-amber-200 dark:border-amber-900/50",
-        badge:
-          "bg-amber-50 text-amber-600 border-amber-200 dark:bg-amber-950/40 dark:text-amber-400 dark:border-amber-900/40",
-        gradient: "from-amber-500 to-orange-500",
+        text: "text-amber-600 dark:text-amber-400",
+        gradientBar: "from-amber-500 to-orange-500",
+        gradientHero: "from-amber-500 via-orange-600 to-rose-600",
+        ring: "ring-amber-200 dark:ring-amber-800",
+        badge: "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+        iconBg: "bg-amber-50 dark:bg-amber-900/30",
         emoji: "👍",
+        label: "ভালো করেছ!",
       };
     return {
-      text: "text-red-500 dark:text-red-400",
-      bg: "bg-red-500",
-      lightBg: "bg-red-50 dark:bg-red-950/30",
-      border: "border-red-200 dark:border-red-900/50",
-      badge:
-        "bg-red-50 text-red-500 border-red-200 dark:bg-red-950/40 dark:text-red-400 dark:border-red-900/40",
-      gradient: "from-red-500 to-rose-500",
+      text: "text-red-600 dark:text-red-400",
+      gradientBar: "from-red-500 to-rose-500",
+      gradientHero: "from-red-600 via-rose-600 to-pink-700",
+      ring: "ring-red-200 dark:ring-red-800",
+      badge: "bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800",
+      iconBg: "bg-red-50 dark:bg-red-900/30",
       emoji: "📚",
+      label: "আরো পড়াশোনা করো",
     };
   };
 
   const colors = getColorScheme();
+  const grade =
+    percentage >= 80
+      ? "A+"
+      : percentage >= 70
+      ? "A"
+      : percentage >= 60
+      ? "B"
+      : percentage >= 50
+      ? "C"
+      : "F";
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-300 flex items-center justify-center p-4 md:p-8">
-      <div className="bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-3xl shadow-xl w-full max-w-md p-6 md:p-8 relative overflow-hidden transition-all">
-        {/* Decorative Top Glow 🎆 */}
-        <div
-          className={`absolute top-0 left-0 right-0 h-2 bg-linear-to-r ${colors.gradient}`}
-        />
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 transition-colors duration-300">
 
-        <div className="flex flex-col items-center mb-6 text-center">
-          <div
-            className={`p-4 ${colors.lightBg} rounded-full ${colors.text} border ${colors.border} mb-4 shadow-sm animate-bounce`}
-          >
-            <CheckCircle2 size={44} strokeWidth={2.5} />
+      {/* ── Hero ── */}
+      <div className={`relative overflow-hidden bg-gradient-to-br ${colors.gradientHero} pt-14 pb-28 text-center px-4`}>
+        <div className="pointer-events-none absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/5" />
+        <div className="pointer-events-none absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-white/5" />
+
+        <div className="relative z-10">
+          <div className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl ${colors.iconBg} ring-2 ${colors.ring} shadow-xl mb-4 animate-bounce`}>
+            <CheckCircle2 size={40} className={colors.text} strokeWidth={2.5} />
           </div>
-          <h1 className="text-2xl md:text-3xl font-black text-stone-800 dark:text-stone-100 uppercase tracking-tight flex items-center gap-2">
+
+          <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight">
             Exam শেষ! {colors.emoji}
           </h1>
-          <p className="text-stone-500 dark:text-stone-400 font-bold text-base mt-1 flex items-center gap-1.5">
-            <User size={16} className="text-amber-500" />
-            {student.name}
+
+          <div className="flex items-center justify-center gap-2 mt-2 text-white/80 font-medium text-sm">
+            <User size={15} />
+            <span>{student.name}</span>
+          </div>
+
+          <p className="mt-1 text-white/60 text-xs font-semibold uppercase tracking-widest">
+            {colors.label}
           </p>
         </div>
+      </div>
 
-        <div className="bg-stone-50 dark:bg-stone-900/50 border border-stone-200 dark:border-stone-800/80 rounded-2xl p-5 mb-5 space-y-4">
-          {/* Score Text */}
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-black text-stone-400 dark:text-stone-500 uppercase tracking-wider flex items-center gap-1">
-              <Award size={14} /> Score
-            </span>
-            <span className="text-2xl font-black text-stone-800 dark:text-stone-100">
-              {result.score}
-              <span className="text-stone-400 dark:text-stone-500 text-lg font-medium">
-                /{result.totalMarks}
-              </span>
-            </span>
-          </div>
+      {/* ── Result Card (overlapping hero) ── */}
+      <div className="max-w-md mx-auto px-4 -mt-16 relative z-10 pb-16 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
 
-          {/* Dynamic Percentage Progress Bar */}
-          <div>
-            <div className="flex justify-between mb-1.5">
-              <span className="text-xs font-black text-stone-400 dark:text-stone-500 uppercase tracking-wider">
-                Percentage
+        {/* Score card */}
+        <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl shadow-gray-900/10 border border-gray-100 dark:border-gray-800 p-6 md:p-8">
+
+          {/* Score + percentage */}
+          <div className="space-y-5">
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-1.5 text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+                <Award size={14} /> Score
               </span>
-              <span className={`text-xs font-black ${colors.text}`}>
-                {result.percentage}%
+              <span className="text-3xl font-black text-gray-900 dark:text-white">
+                {result.score}
+                <span className="text-gray-400 dark:text-gray-500 text-xl font-semibold">
+                  /{result.totalMarks}
+                </span>
               </span>
             </div>
-            <div className="bg-stone-200 dark:bg-stone-800 rounded-full h-3 overflow-hidden border border-stone-200/20 dark:border-stone-700/30">
-              <div
-                className={`h-full rounded-full transition-all duration-1000 ease-out bg-linear-to-r ${colors.gradient}`}
-                style={{ width: `${percentage}%` }}
-              />
-            </div>
-          </div>
 
-          {/* Grade Badge */}
-          <div className="flex items-center justify-between pt-3 border-t border-stone-200 dark:border-stone-800">
-            <span className="text-xs font-black text-stone-400 dark:text-stone-500 uppercase tracking-wider">
-              Grade
-            </span>
-            <span
-              className={`px-4 py-1 rounded-full text-xs font-black border ${colors.badge} shadow-sm`}
-            >
-              {percentage >= 80
-                ? "A+"
-                : percentage >= 70
-                  ? "A"
-                  : percentage >= 60
-                    ? "B"
-                    : percentage >= 50
-                      ? "C"
-                      : "F"}
-            </span>
+            {/* Progress bar */}
+            <div>
+              <div className="flex justify-between mb-2">
+                <span className="text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+                  Percentage
+                </span>
+                <span className={`text-xs font-black ${colors.text}`}>
+                  {result.percentage}%
+                </span>
+              </div>
+              <div className="bg-gray-100 dark:bg-gray-800 rounded-full h-3 overflow-hidden">
+                <div
+                  className={`h-full rounded-full transition-all duration-1000 ease-out bg-gradient-to-r ${colors.gradientBar}`}
+                  style={{ width: `${percentage}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Grade */}
+            <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
+              <span className="flex items-center gap-1.5 text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+                <Trophy size={14} /> Grade
+              </span>
+              <span className={`px-5 py-1.5 rounded-full text-sm font-black border ${colors.badge} shadow-sm`}>
+                {grade}
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* 🪪 Student Profile Details Info */}
-        <div className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-100/70 dark:border-amber-900/30 rounded-2xl p-4 mb-6 space-y-2.5">
-          <p className="text-[10px] text-amber-600 dark:text-amber-400 uppercase font-black tracking-wider mb-1 flex items-center gap-1">
+        {/* Student details */}
+        <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-sm p-6">
+          <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-4 flex items-center gap-1.5">
             📌 Student Details
           </p>
 
-          <div className="flex justify-between items-center text-xs">
-            <span className="text-stone-500 dark:text-stone-400 flex items-center gap-1">
-              <Hash size={12} /> Student ID
-            </span>
-            <span className="font-bold text-stone-700 dark:text-stone-300 font-mono bg-white dark:bg-stone-800 px-2 py-0.5 rounded border border-stone-200 dark:border-stone-700">
-              {student.studentId}
-            </span>
-          </div>
-
-          <div className="flex justify-between items-center text-xs">
-            <span className="text-stone-500 dark:text-stone-400 flex items-center gap-1">
-              <Hash size={12} /> Roll
-            </span>
-            <span className="font-bold text-stone-700 dark:text-stone-300 font-mono bg-white dark:bg-stone-800 px-2 py-0.5 rounded border border-stone-200 dark:border-stone-700">
-              {student.roll}
-            </span>
-          </div>
-
-          <div className="flex justify-between items-center text-xs">
-            <span className="text-stone-500 dark:text-stone-400 flex items-center gap-1">
-              <Mail size={12} /> Email
-            </span>
-            <span className="font-bold text-stone-700 dark:text-stone-300 truncate max-w-50">
-              {student.email}
-            </span>
+          <div className="space-y-3">
+            {[
+              { icon: <Hash size={12} />, label: "Student ID", value: student.studentId, mono: true },
+              { icon: <Hash size={12} />, label: "Roll", value: student.roll, mono: true },
+              { icon: <Mail size={12} />, label: "Email", value: student.email, mono: false },
+            ].map(({ icon, label, value, mono }) => (
+              <div key={label} className="flex items-center justify-between gap-3">
+                <span className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 shrink-0">
+                  {icon} {label}
+                </span>
+                <span className={`text-xs font-bold text-gray-700 dark:text-gray-300 truncate max-w-[55%] text-right ${mono ? "font-mono bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-lg border border-gray-200 dark:border-gray-700" : ""}`}>
+                  {value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* 🔄 Retry Status Indicator */}
-        <div className="mb-6 flex items-center justify-center">
+        {/* Retry status */}
+        <div className="flex justify-center">
           {result.canRetry ? (
-            <div className="flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 px-3 py-1.5 rounded-xl text-emerald-600 dark:text-emerald-400 text-xs font-bold animate-pulse">
-              <RefreshCw
-                size={13}
-                className="animate-spin"
-                style={{ animationDuration: "3s" }}
-              />
-              <span>Admin আবার exam দেওয়ার সুযোগ দিয়েছে!</span>
+            <div className="flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800 px-4 py-2.5 rounded-2xl text-emerald-600 dark:text-emerald-400 text-xs font-bold animate-pulse">
+              <RefreshCw size={13} className="animate-spin" style={{ animationDuration: "3s" }} />
+              <span>Admin আবার exam দেওয়ার সুযোগ দিয়েছে!</span>
             </div>
           ) : (
-            <div className="flex items-center gap-1.5 bg-stone-100 dark:bg-stone-800 px-3 py-1.5 rounded-xl text-stone-500 dark:text-stone-400 text-xs font-medium border border-stone-200 dark:border-stone-700">
+            <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-2.5 rounded-2xl text-gray-500 dark:text-gray-400 text-xs font-medium">
               <ShieldAlert size={13} />
-              <span>Exam একবারই দেওয়া যাবে</span>
+              <span>Exam একবারই দেওয়া যাবে</span>
             </div>
           )}
         </div>
 
-        {/* 📥 Action Button */}
+        {/* Download button */}
         <button
           onClick={handleDownload}
-          className="w-full h-13 rounded-2xl bg-amber-500 hover:bg-amber-600 dark:bg-amber-600 dark:hover:bg-amber-700 text-white font-black text-sm uppercase tracking-wider transition-all duration-200 shadow-lg shadow-amber-500/20 active:scale-[0.99] flex items-center justify-center gap-2"
+          className="w-full py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm uppercase tracking-widest transition-all shadow-xl shadow-emerald-600/30 hover:shadow-emerald-600/50 hover:-translate-y-0.5 active:scale-[0.99] flex items-center justify-center gap-2"
         >
           <Download size={18} />
           Result Download করো

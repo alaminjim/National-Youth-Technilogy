@@ -31,7 +31,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-screen bg-background antialiased selection:bg-primary/10 selection:text-primary transition-colors duration-500">
+      <body 
+        className="min-h-screen bg-background antialiased selection:bg-primary/10 selection:text-primary transition-colors duration-500"
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -39,9 +42,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ReactQueryProvider>{children}</ReactQueryProvider>
-
-          <Toaster position="top-right" richColors closeButton />
         </ThemeProvider>
+        <Toaster position="top-right" richColors closeButton />
       </body>
     </html>
   );

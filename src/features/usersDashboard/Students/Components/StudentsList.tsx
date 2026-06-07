@@ -52,7 +52,7 @@ export default function StudentsList() {
   if (isLoading) {
     return (
       <div className="flex flex-col justify-center items-center py-40 space-y-4">
-        <Loader2 className="animate-spin text-blue-500" size={40} />
+        <Loader2 className="animate-spin text-green-600 dark:text-emerald-500" size={40} />
         <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-gray-500 animate-pulse">
           Loading Roster... ⏳
         </p>
@@ -64,24 +64,24 @@ export default function StudentsList() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
 
       {/* 🏷️ Header Section */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 md:mb-8 gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 md:mb-10 gap-4">
         <div className="flex items-center gap-3 sm:gap-4">
-          <div className="p-2.5 sm:p-3 bg-blue-500/10 rounded-xl sm:rounded-2xl">
-            <Users className="text-blue-500" size={24} />
+          <div className="p-3 bg-green-55 dark:bg-green-950/30 border border-green-150/30 dark:border-green-900/20 rounded-2xl">
+            <Users className="text-green-600 dark:text-emerald-400" size={24} />
           </div>
           <div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-gray-800 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-gray-800 dark:text-white">
               Student Roster 🧑‍🎓
             </h2>
-            <p className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-widest">
+            <p className="text-[10px] sm:text-xs font-bold text-gray-500 uppercase tracking-[0.15em]">
               Manage your academic database
             </p>
           </div>
         </div>
 
-        <div className="bg-blue-500/5 self-start sm:self-auto px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl border border-blue-500/10">
-          <span className="text-xs sm:text-sm font-bold text-blue-600 dark:text-blue-400">
-            Total: {students.length} Students
+        <div className="bg-green-50/50 dark:bg-green-950/20 px-4 py-2 rounded-xl border border-green-150/50 dark:border-green-900/30 self-start sm:self-auto shadow-xs">
+          <span className="text-xs sm:text-sm font-bold text-green-700 dark:text-emerald-400">
+            Total: {students.length} Students Registered
           </span>
         </div>
       </div>
@@ -94,7 +94,7 @@ export default function StudentsList() {
             {students.map((student) => (
               <div 
                 key={student.id} 
-                className="bg-white dark:bg-gray-950 p-4 rounded-2xl border border-gray-200 dark:border-white/10 shadow-xs flex flex-col gap-4"
+                className="bg-white dark:bg-gray-950 p-5 rounded-[2rem] border border-gray-150 dark:border-white/5 shadow-xs flex flex-col gap-4"
               >
                 {/* Upper info */}
                 <div className="flex items-center gap-3">
@@ -105,7 +105,7 @@ export default function StudentsList() {
                       className="h-12 w-12 rounded-xl object-cover ring-2 ring-gray-100 dark:ring-white/10"
                     />
                   ) : (
-                    <div className="h-12 w-12 rounded-xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
+                    <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center text-white font-bold text-lg">
                       {student.name?.charAt(0)}
                     </div>
                   )}
@@ -113,14 +113,14 @@ export default function StudentsList() {
                     <span className="font-bold text-gray-800 dark:text-gray-100 text-base truncate">
                       {student.name}
                     </span>
-                    <span className="text-[10px] font-bold text-blue-500 uppercase tracking-wider">
+                    <span className="text-[10px] font-bold text-green-600 dark:text-emerald-400 uppercase tracking-wider">
                       {student.gender} • Enrolled
                     </span>
                   </div>
                 </div>
 
                 {/* Sub details */}
-                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-gray-100 dark:border-white/5 text-xs text-gray-600 dark:text-gray-400">
+                <div className="grid grid-cols-2 gap-2 pt-3 border-t border-gray-100 dark:border-white/5 text-xs text-gray-600 dark:text-gray-400">
                   <div className="flex items-center gap-1.5 font-mono">
                     <IdCard size={14} className="text-gray-400 shrink-0" />
                     <span className="truncate">ID: {student.studentId}</span>
@@ -136,12 +136,12 @@ export default function StudentsList() {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex justify-end gap-2 pt-2 border-t border-gray-100 dark:border-white/5">
-                  <ActionBtn icon={<Eye size={16} />} color="text-blue-500 bg-blue-50 dark:bg-blue-500/10" onClick={() => setViewingStudent(student)} />
-                  <ActionBtn icon={<Pencil size={16} />} color="text-emerald-500 bg-emerald-50 dark:bg-emerald-500/10" onClick={() => setEditingStudent(student)} />
+                <div className="flex justify-end gap-2 pt-3 border-t border-gray-100 dark:border-white/5">
+                  <ActionBtn icon={<Eye size={16} />} color="text-green-600 bg-green-50 dark:bg-green-950/30" onClick={() => setViewingStudent(student)} />
+                  <ActionBtn icon={<Pencil size={16} />} color="text-teal-600 bg-teal-50 dark:bg-teal-950/30" onClick={() => setEditingStudent(student)} />
                   <ActionBtn
                     icon={deletingId === student.id ? <Loader2 size={16} className="animate-spin" /> : <Trash2 size={16} />}
-                    color="text-red-500 bg-red-50 dark:bg-red-500/10"
+                    color="text-red-600 bg-red-50 dark:bg-red-950/30"
                     onClick={() => handleDelete(student.id)}
                     disabled={deletingId === student.id}
                   />
@@ -151,11 +151,11 @@ export default function StudentsList() {
           </div>
 
           {/* 🖥️ Desktop View (Table) */}
-          <div className="hidden md:block rounded-[2rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-gray-950 shadow-sm overflow-hidden">
+          <div className="hidden md:block rounded-[2.5rem] border border-gray-150 dark:border-white/5 bg-white dark:bg-gray-900 shadow-xl shadow-green-950/[0.01] overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-left border-collapse">
                 <thead>
-                  <tr className="bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-gray-400 uppercase text-[10px] font-black tracking-wider">
+                  <tr className="bg-gray-50/50 dark:bg-white/5 text-gray-500 dark:text-gray-400 uppercase text-[10px] font-black tracking-wider">
                     <th className="p-6">Student Info</th>
                     <th className="p-6">Gender / ID</th>
                     <th className="p-6 hidden lg:table-cell">Location</th>
@@ -165,7 +165,7 @@ export default function StudentsList() {
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-white/5">
                   {students.map((student) => (
-                    <tr key={student.id} className="group hover:bg-gray-50/50 dark:hover:bg-white/5 transition-all">
+                    <tr key={student.id} className="group hover:bg-green-500/[0.01] dark:hover:bg-white/5 transition-all">
                       <td className="p-6">
                         <div className="flex items-center gap-4">
                           <div className="relative">
@@ -176,7 +176,7 @@ export default function StudentsList() {
                                 className="h-12 w-12 rounded-2xl object-cover ring-2 ring-gray-100 dark:ring-white/10"
                               />
                             ) : (
-                              <div className="h-12 w-12 rounded-2xl bg-linear-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold">
+                              <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center text-white font-bold">
                                 {student.name?.charAt(0)}
                               </div>
                             )}
@@ -185,7 +185,7 @@ export default function StudentsList() {
                             <span className="font-bold text-gray-800 dark:text-gray-100 text-base">
                               {student.name}
                             </span>
-                            <span className="text-[10px] font-bold text-blue-500 uppercase opacity-70 tracking-wider">
+                            <span className="text-[10px] font-bold text-green-600 dark:text-emerald-400 uppercase opacity-70 tracking-wider">
                               Enrolled Student
                             </span>
                           </div>
@@ -194,7 +194,7 @@ export default function StudentsList() {
 
                       <td className="p-6">
                         <div className="flex flex-col">
-                          <span className="font-medium text-gray-700 dark:text-gray-300">
+                          <span className="font-semibold text-gray-700 dark:text-gray-300">
                             {student.gender}
                           </span>
                           <span className="text-[10px] font-mono text-gray-400">
@@ -203,21 +203,21 @@ export default function StudentsList() {
                         </div>
                       </td>
 
-                      <td className="p-6 hidden lg:table-cell text-gray-600 dark:text-gray-400">
+                      <td className="p-6 hidden lg:table-cell text-gray-600 dark:text-gray-400 font-medium">
                         {student.district}
                       </td>
 
-                      <td className="p-6 font-mono text-xs text-gray-500">
+                      <td className="p-6 font-mono text-xs text-gray-500 font-semibold">
                         {student.guardianPhone}
                       </td>
 
                       <td className="p-6">
                         <div className="flex justify-end gap-3">
-                          <ActionBtn icon={<Eye size={16} />} color="text-blue-500 bg-blue-50 dark:bg-blue-500/10" onClick={() => setViewingStudent(student)} />
-                          <ActionBtn icon={<Pencil size={16} />} color="text-emerald-500 bg-emerald-50 dark:bg-emerald-500/10" onClick={() => setEditingStudent(student)} />
+                          <ActionBtn icon={<Eye size={16} />} color="text-green-600 bg-green-50 dark:bg-green-950/30" onClick={() => setViewingStudent(student)} />
+                          <ActionBtn icon={<Pencil size={16} />} color="text-teal-600 bg-teal-50 dark:bg-teal-950/30" onClick={() => setEditingStudent(student)} />
                           <ActionBtn
                             icon={deletingId === student.id ? <Loader2 size={16} className="animate-spin" /> : <Trash2 size={16} />}
-                            color="text-red-500 bg-red-50 dark:bg-red-500/10"
+                            color="text-red-600 bg-red-50 dark:bg-red-950/30"
                             onClick={() => handleDelete(student.id)}
                             disabled={deletingId === student.id}
                           />
@@ -232,12 +232,12 @@ export default function StudentsList() {
         </>
       ) : (
         /* 📭 Empty State */
-        <div className="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-gray-950 py-16 sm:py-20 text-center flex flex-col items-center space-y-3">
-          <div className="h-14 w-14 sm:h-16 sm:w-16 bg-gray-100 dark:bg-white/5 rounded-full flex items-center justify-center text-gray-400">
+        <div className="rounded-[2.5rem] border border-gray-150 dark:border-white/5 bg-white dark:bg-gray-900 py-16 sm:py-20 text-center flex flex-col items-center space-y-3 shadow-xl shadow-green-950/[0.01]">
+          <div className="h-14 w-14 sm:h-16 sm:w-16 bg-green-50 dark:bg-green-950/20 border border-green-100/50 dark:border-green-900/30 rounded-full flex items-center justify-center text-green-600 dark:text-emerald-400">
             <Users size={28} />
           </div>
-          <p className="font-bold text-gray-500 uppercase tracking-widest text-[10px] sm:text-xs">
-            No students found 🔍
+          <p className="font-bold text-gray-500 uppercase tracking-widest text-[10px] sm:text-xs font-sans">
+            No students found in the roster 🔍
           </p>
         </div>
       )}
@@ -267,7 +267,7 @@ function ActionBtn({ icon, color, onClick, disabled = false }: any) {
       size="icon"
       variant="ghost"
       disabled={disabled}
-      className={`h-9 w-9 sm:h-10 sm:w-10 rounded-xl transition-all duration-300 hover:scale-110 active:scale-90 ${color}`}
+      className={`h-9 w-9 sm:h-10 sm:w-10 rounded-xl transition-all duration-300 hover:scale-110 active:scale-90 border border-transparent hover:border-current/10 cursor-pointer ${color}`}
       onClick={onClick}
     >
       {icon}

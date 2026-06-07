@@ -55,7 +55,7 @@ export const Footer = () => {
                 <h2 className="font-black text-xl leading-tight tracking-tighter uppercase">
                   Bangladesh National
                 </h2>
-                <p className="text-cyan-500 text-[11px] font-bold uppercase tracking-widest">
+                <p className="text-green-600 text-[11px] font-bold uppercase tracking-widest">
                   Youth Technical Institute
                 </p>
               </div>
@@ -83,7 +83,7 @@ export const Footer = () => {
           </div>
 
           <div className="lg:pl-10 relative">
-            <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-0.5 bg-emerald-500"></div>
+            <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-0.5 bg-green-600"></div>
             <h3 className="text-lg font-black uppercase mb-8 tracking-widest">
               USEFUL LINKS
             </h3>
@@ -92,7 +92,7 @@ export const Footer = () => {
                 <li key={i}>
                   <Link
                     href={item.href}
-                    className="text-xs font-bold text-gray-300 hover:text-emerald-500 transition-colors border-b border-gray-600 pb-1 inline-block min-w-30"
+                    className="text-xs font-bold text-gray-300 hover:text-green-600 transition-colors border-b border-gray-600 pb-1 inline-block min-w-30"
                   >
                     {item.label}
                   </Link>
@@ -122,7 +122,7 @@ export const Footer = () => {
                     href="https://btetbd.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-emerald-500 hover:underline"
+                    className="text-green-600 hover:underline"
                   >
                     www.btetbd.com
                   </Link>
@@ -169,7 +169,7 @@ export const Footer = () => {
                       key={day}
                       className={`text-[10px] font-bold p-1 transition-all ${
                         isToday
-                          ? "bg-cyan-500 text-white rounded-full scale-110 shadow-lg"
+                          ? "bg-green-600 text-white rounded-full scale-110 shadow-lg"
                           : "text-gray-300 hover:bg-white/10 rounded-full cursor-default"
                       }`}
                     >

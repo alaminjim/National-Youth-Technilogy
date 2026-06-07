@@ -14,8 +14,10 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.4 }
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.4 },
     );
     if (ringRef.current) observer.observe(ringRef.current);
     return () => observer.disconnect();
@@ -45,7 +47,10 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
       }}
     >
       {/* Colored top accent bar */}
-      <div className="w-full h-1.5 shrink-0" style={{ background: `linear-gradient(90deg, ${color}, ${color}99)` }} />
+      <div
+        className="w-full h-1.5 shrink-0"
+        style={{ background: `linear-gradient(90deg, ${color}, ${color}99)` }}
+      />
 
       <div className="flex flex-col items-center px-6 pt-8 pb-7 w-full">
         {/* Icon badge */}
@@ -63,12 +68,24 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
             className="absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 scale-90"
             style={{ background: color }}
           />
-          <svg className="w-36 h-36 -rotate-90 relative z-10" viewBox="0 0 128 128">
+          <svg
+            className="w-36 h-36 -rotate-90 relative z-10"
+            viewBox="0 0 128 128"
+          >
             {/* Track */}
-            <circle cx="64" cy="64" r={radius} stroke={`${color}18`} strokeWidth="9" fill="transparent" />
+            <circle
+              cx="64"
+              cy="64"
+              r={radius}
+              stroke={`${color}18`}
+              strokeWidth="9"
+              fill="transparent"
+            />
             {/* Progress */}
             <circle
-              cx="64" cy="64" r={radius}
+              cx="64"
+              cy="64"
+              r={radius}
               stroke={color}
               strokeWidth="9"
               fill="transparent"
@@ -83,15 +100,23 @@ const AnimatedRing = ({ value, color, label, subtitle, icon }: ImpactStat) => {
           </svg>
           {/* Center text */}
           <div className="absolute flex flex-col items-center leading-none z-20">
-            <span className="text-3xl font-black tracking-tight" style={{ color }}>
+            <span
+              className="text-3xl font-black tracking-tight"
+              style={{ color }}
+            >
               {count}%
             </span>
-            <span className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mt-0.5">Complete</span>
+            <span className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mt-0.5">
+              Complete
+            </span>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="w-10 h-0.5 rounded-full mb-4" style={{ background: `${color}40` }} />
+        <div
+          className="w-10 h-0.5 rounded-full mb-4"
+          style={{ background: `${color}40` }}
+        />
 
         {/* Label */}
         <h4 className="text-[12px] font-black uppercase tracking-[0.18em] text-gray-800 mb-2 text-center">
@@ -121,7 +146,10 @@ export default function CircularProgress() {
               Latest Updates
             </span>
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white leading-tight uppercase tracking-tight">
-              Recent <span className="text-emerald-600 dark:text-emerald-400">News</span>
+              Recent{" "}
+              <span className="text-emerald-600 dark:text-emerald-400">
+                News
+              </span>
             </h2>
           </div>
           <a
@@ -129,7 +157,9 @@ export default function CircularProgress() {
             className="group flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-extrabold text-sm hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors uppercase tracking-wider"
           >
             View All News
-            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+              →
+            </span>
           </a>
         </div>
 
@@ -139,21 +169,34 @@ export default function CircularProgress() {
             {/* Background design elements */}
             <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl group-hover/feat:scale-125 transition-transform duration-500 pointer-events-none" />
             <div className="absolute -left-10 -top-10 w-32 h-32 bg-emerald-450/5 rounded-full blur-xl pointer-events-none" />
-            
+
             <div className="relative z-10">
               <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 4a2 2 0 012 2v4a2 2 0 01-2 2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                <svg
+                  className="w-6 h-6 text-emerald-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 4a2 2 0 012 2v4a2 2 0 01-2 2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                  />
                 </svg>
               </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-emerald-300">Announcements</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-emerald-300">
+                Announcements
+              </span>
               <h3 className="text-2xl font-black text-white leading-tight mt-2">
                 Stay updated with our latest news
               </h3>
             </div>
-            
+
             <p className="text-emerald-100/60 text-xs mt-4 mb-6 leading-relaxed relative z-10">
-              Get official news, event information, and notice summaries directly from the institute board.
+              Get official news, event information, and notice summaries
+              directly from the institute board.
             </p>
           </div>
 
@@ -165,24 +208,28 @@ export default function CircularProgress() {
               <div className="flex gap-4 items-start">
                 {/* Date Badge */}
                 <div className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/30 text-emerald-700 dark:text-emerald-400 min-w-[56px] h-14 flex flex-col items-center justify-center rounded-xl shrink-0">
-                  <span className="text-xl font-black tracking-tight leading-none mb-0.5">{news.date}</span>
+                  <span className="text-xl font-black tracking-tight leading-none mb-0.5">
+                    {news.date}
+                  </span>
                   <span className="text-[8px] font-bold uppercase tracking-wider leading-none">
                     {news.monthYear.split(" ")[0]}
                   </span>
                 </div>
-                
+
                 <h4 className="font-extrabold text-gray-850 dark:text-gray-100 text-sm leading-snug line-clamp-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-200">
                   {news.title}
                 </h4>
               </div>
-              
+
               <p className="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-3">
                 {news.description}
               </p>
-              
+
               <button className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 text-[11px] font-black uppercase tracking-wider mt-auto text-left group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors duration-200">
                 <span>Read More</span>
-                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </button>
             </div>
           ))}
@@ -198,21 +245,23 @@ export default function CircularProgress() {
 
         <div className="relative z-10 container mx-auto px-6 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
             {/* Left Column: Text & Features */}
             <div className="lg:col-span-6 space-y-6 text-left">
               <span className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/50 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Launch Your Journey
               </span>
-              
+
               <h2 className="text-3xl md:text-5xl font-black text-gray-905 dark:text-white uppercase leading-tight tracking-tight">
                 Start Your <br />
-                <span className="text-emerald-600 dark:text-emerald-400">New Project</span>
+                <span className="text-emerald-600 dark:text-emerald-400">
+                  New Project
+                </span>
               </h2>
-              
+
               <p className="text-gray-500 dark:text-gray-405 text-sm leading-relaxed max-w-lg">
-                ভবিষ্যতের দক্ষ আইটি পেশাদার হিসেবে নিজেকে তৈরি করতে অথবা আপনার প্রতিষ্ঠানের জন্য কোনো প্রশ্ন থাকলে আমাদের সাথে যোগাযোগ করুন।
+                ভবিষ্যতের দক্ষ আইটি পেশাদার হিসেবে নিজেকে তৈরি করতে অথবা আপনার
+                প্রতিষ্ঠানের জন্য কোনো প্রশ্ন থাকলে আমাদের সাথে যোগাযোগ করুন।
               </p>
 
               <div className="space-y-4 pt-4">
@@ -220,19 +269,25 @@ export default function CircularProgress() {
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xs font-bold">
                     ✓
                   </div>
-                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">২৪ ঘণ্টার মধ্যে নিশ্চিত ফিডব্যাক</span>
+                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">
+                    ২৪ ঘণ্টার মধ্যে নিশ্চিত ফিডব্যাক
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xs font-bold">
                     ✓
                   </div>
-                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">অভিজ্ঞ পরামর্শকদের মাধ্যমে ফ্রী ক্যারিয়ার কাউন্সেলিং</span>
+                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">
+                    অভিজ্ঞ পরামর্শকদের মাধ্যমে ফ্রী ক্যারিয়ার কাউন্সেলিং
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0 text-xs font-bold">
                     ✓
                   </div>
-                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">ব্রাঞ্চ ও কোর্স রেজিস্ট্রেশনের সকল গাইডলাইন</span>
+                  <span className="text-xs font-bold text-gray-750 dark:text-gray-300">
+                    ব্রাঞ্চ ও কোর্স রেজিস্ট্রেশনের সকল গাইডলাইন
+                  </span>
                 </div>
               </div>
             </div>
@@ -243,19 +298,23 @@ export default function CircularProgress() {
                 <h3 className="text-lg font-black text-gray-900 dark:text-white uppercase tracking-wider border-b border-gray-100 dark:border-white/5 pb-4">
                   Request Consultation
                 </h3>
-                
+
                 <div className="space-y-4">
                   <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">Name</label>
+                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                      Name
+                    </label>
                     <input
                       type="text"
                       placeholder="Enter your name"
                       className="w-full bg-gray-50 dark:bg-black/30 hover:bg-gray-100/60 focus:bg-white border border-gray-200 dark:border-white/10 focus:border-emerald-500 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-650 px-4 py-3 rounded-xl text-sm outline-none transition-all focus:ring-1 focus:ring-emerald-500/50"
                     />
                   </div>
-                  
+
                   <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">Email Address</label>
+                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                      Email Address
+                    </label>
                     <input
                       type="email"
                       placeholder="Enter your email"
@@ -264,7 +323,9 @@ export default function CircularProgress() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">Phone Number</label>
+                    <label className="text-[10px] font-black uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                      Phone Number
+                    </label>
                     <input
                       type="tel"
                       placeholder="Enter your phone number"
@@ -278,7 +339,6 @@ export default function CircularProgress() {
                 </button>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -293,23 +353,25 @@ export default function CircularProgress() {
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.035]"
           style={{
-            backgroundImage: "radial-gradient(circle, #00bcd4 1px, transparent 1px)",
+            backgroundImage:
+              "radial-gradient(circle, #00bcd4 1px, transparent 1px)",
             backgroundSize: "32px 32px",
           }}
         />
 
         <div className="relative z-10 container mx-auto px-6 text-center">
           {/* Badge */}
-          <span className="inline-flex items-center gap-2 bg-cyan-50 border border-cyan-200 rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-cyan-600 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+          <span className="inline-flex items-center gap-2 bg-green-50 border border-[#059669] rounded-full px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-[#059669] mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#059669] animate-pulse" />
             Our Performance
           </span>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white uppercase tracking-tight mb-3">
-            Our Global <span className="text-cyan-500">Impact</span>
+            Our Global <span className="text-[#059669]">Impact</span>
           </h2>
           <p className="text-gray-500 text-sm max-w-lg mx-auto mb-16 leading-relaxed">
-            বাংলাদেশের সেরা প্রযুক্তি প্রশিক্ষণ কেন্দ্র হিসেবে আমাদের অর্জনের একটি সংক্ষিপ্ত চিত্র।
+            বাংলাদেশের সেরা প্রযুক্তি প্রশিক্ষণ কেন্দ্র হিসেবে আমাদের অর্জনের
+            একটি সংক্ষিপ্ত চিত্র।
           </p>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
@@ -320,14 +382,16 @@ export default function CircularProgress() {
         </div>
       </section>
 
-
-
       {/* ── Apply Now ── */}
       <section className="relative overflow-hidden py-0">
         {/* Main CTA card */}
-        <div className="relative mx-6 lg:mx-12 xl:mx-20 rounded-3xl overflow-hidden my-12"
-          style={{ background: "linear-gradient(135deg, #0097a7 0%, #00bcd4 40%, #4caf50 100%)" }}>
-
+        <div
+          className="relative mx-6 lg:mx-12 xl:mx-20 rounded-3xl overflow-hidden my-12"
+          style={{
+            background:
+              "linear-gradient(135deg, #0097a7 0%, #00bcd4 40%, #4caf50 100%)",
+          }}
+        >
           {/* Decorative background circles */}
           <div className="absolute -top-16 -right-16 w-64 h-64 bg-white/10 rounded-full pointer-events-none" />
           <div className="absolute -bottom-20 -left-10 w-72 h-72 bg-white/8 rounded-full pointer-events-none" />
@@ -340,14 +404,14 @@ export default function CircularProgress() {
           <div
             className="absolute inset-0 pointer-events-none opacity-[0.06]"
             style={{
-              backgroundImage: "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
+              backgroundImage:
+                "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
               backgroundSize: "40px 40px",
             }}
           />
 
           <div className="relative z-10 px-8 py-12 lg:px-16 lg:py-14">
             <div className="flex flex-col lg:flex-row items-center gap-10">
-
               {/* Left: Text */}
               <div className="flex-1 text-center lg:text-left">
                 {/* Badge */}
@@ -362,7 +426,8 @@ export default function CircularProgress() {
                 </h3>
 
                 <p className="text-white/70 text-sm leading-relaxed max-w-md mb-8 lg:mb-0">
-                  বাংলাদেশ ন্যাশনাল ইয়ুথ টেকনিক্যাল ইনস্টিটিউটে ভর্তি হন এবং আপনার স্বপ্নের ক্যারিয়ার গড়ে তুলুন।
+                  বাংলাদেশ ন্যাশনাল ইয়ুথ টেকনিক্যাল ইনস্টিটিউটে ভর্তি হন এবং
+                  আপনার স্বপ্নের ক্যারিয়ার গড়ে তুলুন।
                 </p>
               </div>
 
@@ -376,8 +441,12 @@ export default function CircularProgress() {
                     { value: "৯৫%", label: "সফলতার হার" },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
-                      <div className="text-2xl font-black text-white tracking-tight">{stat.value}</div>
-                      <div className="text-[10px] font-bold text-white/60 uppercase tracking-wider">{stat.label}</div>
+                      <div className="text-2xl font-black text-white tracking-tight">
+                        {stat.value}
+                      </div>
+                      <div className="text-[10px] font-bold text-white/60 uppercase tracking-wider">
+                        {stat.label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -392,7 +461,9 @@ export default function CircularProgress() {
                     className="group flex items-center gap-2.5 bg-white text-cyan-700 hover:bg-white/90 px-8 py-3.5 rounded-full font-black text-sm uppercase tracking-wider transition-all duration-300 shadow-xl shadow-black/20 hover:-translate-y-0.5 hover:shadow-black/30"
                   >
                     এখনই ভর্তি হন
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">→</span>
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+                      →
+                    </span>
                   </Link>
                   <Link
                     href="/contact"
@@ -402,7 +473,6 @@ export default function CircularProgress() {
                   </Link>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import AboutFounderSection from '@/features/public_assets/Home/AboutFounderSection/AboutFounderSection';
-import { Advantages } from '@/features/public_assets/Home/Advantages';
+import Advantages from '@/features/public_assets/Home/Advantages';
 import CircularProgress from '@/features/public_assets/Home/CircularProgress/CircularProgress';
 import Coursess from '@/features/public_assets/Home/Coursess/Coursess';
 import Instructors from '@/features/public_assets/Home/Instructors/Instructors';
