@@ -53,7 +53,7 @@ export const CertificateModal = ({
     exam: { top: "68%", left: "56.5%" },
     cgpa: { top: "68.3%", left: "86.9%" },
     date1: { top: "88%", left: "25.0%" },
-    qr: { top: "21%", left: "85%" },
+    qr: { top: "59%", left: "12%" },
   };
 
   const handleDownload = () => {
